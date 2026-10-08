@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Third-party inspiration screenshots (local only; repository is public)
+references/inspiration/*
+!references/inspiration/.gitkeep
