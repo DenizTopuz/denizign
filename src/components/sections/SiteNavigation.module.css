@@ -1,0 +1,137 @@
+/* Poster navigation: no container, no divider. It belongs to the canvas. */
+
+.wide {
+  padding-inline: var(--page-padding-mobile);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: var(--space-20);
+}
+
+.logo {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  min-height: var(--space-12);
+}
+
+.mark {
+  display: block;
+  flex-shrink: 0;
+  height: var(--space-8);
+  width: auto;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--space-12);
+  font-size: var(--text-small);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* Brand variant: a larger mark with the name set beside it (text, not a logo). */
+
+.brand {
+  gap: var(--space-3);
+}
+
+.brand .mark {
+  height: var(--space-10);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: var(--text-body-lg);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.light .name {
+  color: var(--color-text);
+}
+
+.dark .name,
+.blend .name {
+  color: var(--color-surface-50);
+}
+
+/* On narrow screens the mark alone keeps all four links on one line. */
+@media (max-width: 767px) {
+  .name {
+    display: none;
+  }
+
+  .brand .mark {
+    height: var(--space-10);
+  }
+}
+
+/* Tones */
+
+.light .link {
+  color: var(--color-text-muted);
+}
+
+.light .link:hover {
+  color: var(--color-text);
+}
+
+.dark .link {
+  color: var(--color-ink-300);
+}
+
+.dark .link:hover {
+  color: var(--color-surface-50);
+}
+
+/* Over photography the links invert, so they stay legible on both grounds. */
+.blend .links {
+  mix-blend-mode: difference;
+}
+
+.blend .link {
+  color: var(--color-surface-0);
+}
+
+@media (max-width: 359px) {
+  .links {
+    gap: var(--space-3);
+  }
+}
+
+@media (min-width: 768px) {
+  .wide {
+    padding-inline: var(--page-padding-tablet);
+  }
+
+  .links {
+    gap: var(--space-8);
+  }
+
+  .link {
+    font-size: var(--text-body);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wide {
+    padding-inline: var(--page-padding-desktop);
+  }
+}
