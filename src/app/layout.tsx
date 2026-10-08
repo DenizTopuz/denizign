@@ -35,16 +35,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${manrope.variable} ${inter.variable}`}
-      style={
-        {
-          "--font-display": `var(--font-manrope), system-ui, sans-serif`,
-          "--font-body": `var(--font-inter), system-ui, sans-serif`,
-        } as React.CSSProperties
-      }
-    >
+    <html lang="en" className={`${manrope.variable} ${inter.variable}`}>
       <body>{children}</body>
     </html>
   );

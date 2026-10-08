@@ -43,8 +43,8 @@
      Typography
      ========================================================================== */
 
-  --font-display: "Manrope", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
+  --font-display: var(--font-manrope), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
 
   --text-display-xl: clamp(3.5rem, 7vw, 6rem);
   --text-display-l: clamp(3rem, 5.5vw, 4.5rem);
