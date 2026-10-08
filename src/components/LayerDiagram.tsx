@@ -15,7 +15,7 @@ export function LayerDiagram() {
       className="section"
       style={{ background: "var(--color-surface-100)" }}
     >
-      <div className="container">
+      <div className="legacy-container">
         <div
           style={{
             display: "grid",

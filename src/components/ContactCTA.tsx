@@ -7,7 +7,7 @@ export function ContactCTA() {
       className="dark-section section"
       aria-labelledby="contact-heading"
     >
-      <div className="container">
+      <div className="legacy-container">
         <div
           style={{
             display: "flex",

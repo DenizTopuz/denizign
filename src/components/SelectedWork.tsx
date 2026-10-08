@@ -48,7 +48,7 @@ export function SelectedWork() {
       className="section"
       style={{ background: "var(--color-surface-50)" }}
     >
-      <div className="container">
+      <div className="legacy-container">
         <ScrollReveal>
           <header style={{ marginBottom: "var(--space-16)" }}>
             <p className="eyebrow" style={{ marginBottom: "var(--space-4)" }}>

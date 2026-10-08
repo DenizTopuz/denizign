@@ -24,7 +24,7 @@ export function ClientLogos() {
         background: "var(--color-surface-0)",
       }}
     >
-      <div className="container">
+      <div className="legacy-container">
         <ScrollReveal>
           <p
             className="eyebrow"

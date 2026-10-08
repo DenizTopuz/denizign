@@ -8,7 +8,7 @@ export function AboutBlock() {
       style={{ background: "var(--color-surface-100)" }}
       aria-labelledby="about-heading"
     >
-      <div className="container">
+      <div className="legacy-container">
         <div
           style={{
             display: "grid",

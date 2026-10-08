@@ -47,7 +47,7 @@ export function SiteHeader() {
       }}
     >
       <div
-        className="container"
+        className="legacy-container"
         style={{
           height: "68px",
           display: "flex",

@@ -33,7 +33,7 @@ export function MethodSection() {
       className="dark-section section"
       aria-labelledby="method-heading"
     >
-      <div className="container">
+      <div className="legacy-container">
         <ScrollReveal>
           <header style={{ marginBottom: "var(--space-16)", maxWidth: "640px" }}>
             <p

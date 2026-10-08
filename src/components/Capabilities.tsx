@@ -50,7 +50,7 @@ export function Capabilities() {
       style={{ background: "var(--color-surface-50)" }}
       aria-labelledby="capabilities-heading"
     >
-      <div className="container">
+      <div className="legacy-container">
         <ScrollReveal>
           <header style={{ marginBottom: "var(--space-16)" }}>
             <p className="eyebrow" style={{ marginBottom: "var(--space-4)" }}>

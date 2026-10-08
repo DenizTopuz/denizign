@@ -19,7 +19,7 @@ export function SiteFooter() {
       }}
       aria-label="Site footer"
     >
-      <div className="container">
+      <div className="legacy-container">
         <div
           style={{
             display: "flex",
