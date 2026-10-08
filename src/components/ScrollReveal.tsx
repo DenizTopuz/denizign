@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, ReactNode } from "react";
+import { useCallback, useEffect, useRef, ReactNode } from "react";
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -15,7 +15,10 @@ export function ScrollReveal({
   delay = 0,
   tag: Tag = "div",
 }: ScrollRevealProps) {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLElement | null>(null);
+  const setRef = useCallback((node: HTMLElement | null) => {
+    ref.current = node;
+  }, []);
 
   useEffect(() => {
     const el = ref.current;
@@ -39,7 +42,7 @@ export function ScrollReveal({
 
   return (
     <Tag
-      ref={ref as React.RefObject<HTMLElement & HTMLDivElement>}
+      ref={setRef}
       className={`reveal ${delayClass} ${className}`.trim()}
     >
       {children}

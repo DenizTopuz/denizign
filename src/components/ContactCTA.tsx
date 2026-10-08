@@ -22,7 +22,7 @@ export function ContactCTA() {
               className="eyebrow"
               style={{ color: "var(--color-ink-300)" }}
             >
-              Let's work together
+              Let&apos;s work together
             </p>
           </ScrollReveal>
 
@@ -51,7 +51,7 @@ export function ContactCTA() {
                 lineHeight: 1.55,
               }}
             >
-              Let's make it clear.
+              Let&apos;s make it clear.
             </p>
           </ScrollReveal>
 

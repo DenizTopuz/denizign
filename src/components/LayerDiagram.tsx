@@ -32,8 +32,8 @@ export function LayerDiagram() {
                 I work between the layers.
               </h2>
               <p className="lead">
-                Great digital products don't fail because of bad ideas — they fail
-                because the layers don't connect. I sit at those intersections.
+                Great digital products don&apos;t fail because of bad ideas — they fail
+                because the layers don&apos;t connect. I sit at those intersections.
               </p>
             </header>
           </ScrollReveal>
