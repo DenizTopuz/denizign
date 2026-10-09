@@ -6,6 +6,7 @@ import { HomepageFooter } from "@/components/sections/HomepageFooter";
 import { HomepageIntro } from "@/components/sections/HomepageIntro";
 import { HomepageLayers } from "@/components/sections/HomepageLayers";
 import { HomepageMethod } from "@/components/sections/HomepageMethod";
+import { HomepageTestimonials } from "@/components/sections/HomepageTestimonials";
 import { HomepageServices } from "@/components/sections/HomepageServices";
 import { HomepageWork } from "@/components/sections/HomepageWork";
 import styles from "./homepage.module.css";
@@ -34,6 +35,8 @@ export default function HomepagePreview() {
         <HomepageMethod />
 
         <HomepageAbout />
+
+        <HomepageTestimonials />
 
         <HomepageContact />
       </main>

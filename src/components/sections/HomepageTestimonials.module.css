@@ -1,0 +1,272 @@
+/*
+ * Testimonials. A dark scene, one recommendation at a time, set as large
+ * typography with one accent phrase. No cards, no photos, no star ratings.
+ * Mobile first: counter, quote, attribution, arrows. From 1024px a vertical
+ * tick selector appears on the right. The hairline at the bottom separates it
+ * from the (also dark) Contact section.
+ */
+
+.testimonials {
+  --pad: var(--page-padding-mobile);
+
+  display: grid;
+  row-gap: var(--space-12);
+  padding-block: var(--space-24) var(--space-24);
+  padding-inline: calc(max(0px, (100% - 90rem) / 2) + var(--pad));
+  border-bottom: 1px solid var(--color-ink-700);
+  background: var(--color-ink-900);
+  color: var(--color-surface-50);
+}
+
+.testimonials > * {
+  min-width: 0;
+}
+
+.label {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-300);
+}
+
+.stage {
+  display: grid;
+  row-gap: var(--space-8);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.counter {
+  margin: 0;
+  max-width: none;
+  font-size: var(--text-small);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-300);
+}
+
+.current {
+  color: var(--color-surface-50);
+}
+
+/* All slides share one cell: the stage is as tall as the longest slide. */
+.slides {
+  display: grid;
+}
+
+.slide {
+  grid-area: 1 / 1;
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity var(--duration-base) var(--ease-out),
+    visibility 0s linear var(--duration-base);
+}
+
+.slide.on {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
+}
+
+.figure {
+  display: grid;
+  row-gap: var(--space-8);
+  margin: 0;
+}
+
+.quote {
+  display: grid;
+  row-gap: var(--space-4);
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--color-surface-50);
+  text-wrap: pretty;
+}
+
+.quote p {
+  margin: 0;
+  max-width: 28em;
+}
+
+/* Size follows length, so every recommendation can stay word for word. */
+.large {
+  font-size: var(--text-h2);
+  line-height: 1.08;
+}
+
+.medium {
+  font-size: var(--text-h3);
+  line-height: 1.15;
+}
+
+.small {
+  font-family: var(--font-body);
+  font-size: var(--text-lead);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+/* Large bold text only: red on near-black is 3.78:1. */
+.mark {
+  color: var(--color-accent);
+}
+
+.caption {
+  display: grid;
+  row-gap: var(--space-1);
+  font-size: var(--text-body);
+  line-height: 1.5;
+}
+
+.name {
+  font-weight: 600;
+  color: var(--color-surface-50);
+}
+
+.role {
+  color: var(--color-ink-300);
+}
+
+.meta {
+  font-size: var(--text-small);
+  color: var(--color-ink-300);
+}
+
+.controls {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.control {
+  display: inline-grid;
+  place-items: center;
+  width: var(--space-12);
+  height: var(--space-12);
+  padding: 0;
+  border: 1px solid var(--color-ink-500);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-surface-50);
+  font-size: var(--text-h4);
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.control:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.control:focus-visible,
+.tab:focus-visible {
+  outline: 2px solid var(--color-surface-50);
+  outline-offset: 3px;
+}
+
+/* The tick selector is a desktop extra; arrows work everywhere. */
+.tabs {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .testimonials {
+    --pad: var(--page-padding-tablet);
+
+    row-gap: var(--space-16);
+    padding-block: var(--space-30);
+  }
+
+  .stage {
+    row-gap: var(--space-12);
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonials {
+    --pad: var(--page-padding-desktop);
+
+    padding-block: var(--space-36);
+  }
+
+  .stage {
+    grid-template-columns: minmax(0, 1fr) var(--space-12);
+    column-gap: var(--space-12);
+    align-items: start;
+  }
+
+  .head,
+  .slides {
+    grid-column: 1;
+  }
+
+  .large {
+    font-size: var(--text-display-l);
+    line-height: 1.02;
+  }
+
+  .medium {
+    font-size: var(--text-h1);
+    line-height: 1.08;
+  }
+
+  .tabs {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    display: grid;
+    justify-items: center;
+  }
+
+  .tab {
+    display: grid;
+    place-items: center;
+    width: var(--space-12);
+    height: var(--space-12);
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+
+  .tick {
+    width: var(--space-4);
+    height: 2px;
+    background: var(--color-ink-500);
+    transition:
+      width var(--duration-base) var(--ease-out),
+      background-color var(--duration-base) var(--ease-out);
+  }
+
+  .tab:hover .tick {
+    background: var(--color-ink-300);
+  }
+
+  .tab[aria-selected="true"] .tick {
+    width: var(--space-8);
+    background: var(--color-accent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .tick,
+  .control {
+    transition: none;
+  }
+}
