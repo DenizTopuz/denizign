@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { HeroStudyB } from "@/components/sections/HeroStudyB";
+import { HomepageAbout } from "@/components/sections/HomepageAbout";
+import { HomepageContact } from "@/components/sections/HomepageContact";
+import { HomepageFooter } from "@/components/sections/HomepageFooter";
 import { HomepageIntro } from "@/components/sections/HomepageIntro";
 import { HomepageLayers } from "@/components/sections/HomepageLayers";
 import { HomepageMethod } from "@/components/sections/HomepageMethod";
@@ -15,23 +18,27 @@ export const metadata: Metadata = {
 
 export default function HomepagePreview() {
   return (
-    <main id="main-content">
-      <p className={styles.caption}>Hero</p>
-      <HeroStudyB />
+    <>
+      <main id="main-content">
+        <p className={styles.caption}>Hero</p>
+        <HeroStudyB />
 
-      <HomepageIntro />
+        <HomepageIntro />
 
-      <HomepageServices />
+        <HomepageServices />
 
-      <HomepageWork />
+        <HomepageWork />
 
-      <HomepageLayers />
+        <HomepageLayers />
 
-      <HomepageMethod />
+        <HomepageMethod />
 
-      <div className={styles.marker}>
-        <p className={styles.caption}>Next: About</p>
-      </div>
-    </main>
+        <HomepageAbout />
+
+        <HomepageContact />
+      </main>
+
+      <HomepageFooter />
+    </>
   );
 }

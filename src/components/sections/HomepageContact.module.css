@@ -1,0 +1,152 @@
+/*
+ * Contact. A dark closing scene on near-black. Mobile first: statement, then
+ * two ruled rows (label above the link). From 768px the label sits beside the
+ * link. The colour change from the light About section is the separator.
+ */
+
+.contact {
+  --pad: var(--page-padding-mobile);
+
+  display: grid;
+  row-gap: var(--space-12);
+  /* The content is centred in a 90rem box on very wide screens; the section
+     itself (background) stays full width. */
+  padding-block: var(--space-24) var(--space-30);
+  padding-inline: calc(max(0px, (100% - 90rem) / 2) + var(--pad));
+  background: var(--color-ink-900);
+  color: var(--color-surface-50);
+}
+
+.label {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-300);
+}
+
+.statement {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-display);
+  font-size: var(--text-display-l);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--color-surface-50);
+  text-wrap: balance;
+}
+
+/* One phrase carries the accent (large text: 3:1 is enough on near-black). */
+.accent {
+  color: var(--color-accent);
+}
+
+.rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--color-ink-700);
+}
+
+.row {
+  display: grid;
+  row-gap: var(--space-3);
+  padding-block: var(--space-8);
+  border-top: 1px solid var(--color-ink-700);
+}
+
+.rowLabel {
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-300);
+}
+
+/* The links are large, with a red underline as the action cue. */
+.link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  justify-self: start;
+  max-width: 100%;
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-surface-50);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.linkText {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-decoration-color: var(--color-accent);
+  text-decoration-skip-ink: none;
+  text-underline-offset: 0.2em;
+}
+
+.arrow {
+  color: var(--color-accent);
+}
+
+.link:hover .linkText {
+  text-decoration-color: var(--color-surface-50);
+}
+
+@media (min-width: 768px) {
+  .contact {
+    --pad: var(--page-padding-tablet);
+
+    row-gap: var(--space-16);
+    padding-block: var(--space-30) var(--space-36);
+  }
+
+  .row {
+    grid-template-columns: 8rem minmax(0, 1fr);
+    column-gap: var(--space-6);
+    align-items: baseline;
+    padding-block: var(--space-10);
+  }
+
+  .link {
+    font-size: var(--text-h2);
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact {
+    --pad: var(--page-padding-desktop);
+
+    row-gap: var(--space-20);
+    padding-block: var(--space-36);
+  }
+
+  .statement {
+    font-size: var(--text-display-xl);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+    /* A wide statement, with air on the right. */
+    max-width: 18em;
+  }
+
+  .row {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    padding-block: var(--space-12);
+  }
+
+  .rowLabel {
+    grid-column: 1 / span 3;
+  }
+
+  .link {
+    grid-column: 4 / -1;
+  }
+}

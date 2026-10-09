@@ -72,3 +72,52 @@ export const method: Service[] = [
       "Create solutions, systems and patterns that work beyond one screen or one team.",
   },
 ];
+
+/*
+ * About. Only facts from brand/brand-foundation.md ("Professional profile")
+ * and the confirmed location. No years of experience, project counts, clients
+ * or outcomes: those are not verified yet.
+ */
+export const about = {
+  statement: "UX Lead with a technical front-end background.",
+  paragraphs: [
+    "I'm Deniz Topuz, a UX Lead based in the Netherlands. I combine UX design with a technical front-end background.",
+    "My strength is not one individual skill. It is the ability to connect disciplines and move between strategic, technical and design perspectives.",
+  ],
+  rolesLabel: "I work as",
+  roles: [
+    "UX Lead",
+    "Product Designer",
+    "UX Architect",
+    "Consultant",
+    "Design System Lead",
+    "Product / Epic Owner",
+    "Coach",
+    "Facilitator",
+  ],
+};
+
+/*
+ * Contact and footer. Confirmed by Deniz: email hello@denizign.nl, his own
+ * LinkedIn profile, KvK number 80072518. No phone number, no availability
+ * claim, no CV link (the PDF does not exist).
+ */
+export const contact = {
+  label: "// Contact",
+  /** The statement is split so one phrase can carry the accent. */
+  statement: {
+    lead: "Have a complex product problem? Let’s ",
+    accent: "make it clear.",
+  },
+  email: "hello@denizign.nl",
+  linkedin: {
+    label: "LinkedIn",
+    url: "https://linkedin.com/in/deniztopuz",
+  },
+};
+
+export const footer = {
+  owner: "Deniz Topuz",
+  kvk: "80072518",
+  location: "Netherlands",
+};

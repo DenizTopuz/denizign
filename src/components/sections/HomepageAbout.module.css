@@ -1,0 +1,160 @@
+/*
+ * About. Warm-white canvas, no cards. Mobile first: label, portrait, then the
+ * text. From 1024px the portrait takes the left five columns and the text the
+ * right six.
+ */
+
+.about {
+  --pad: var(--page-padding-mobile);
+
+  /* Full-width line between sections: the section's own top edge. */
+  border-top: 1px solid var(--color-text);
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: var(--space-10);
+  /* The content is centred in a 90rem box on very wide screens; the section
+     itself (background, top line) stays full width. */
+  padding-block: var(--space-24) var(--space-30);
+  padding-inline: calc(max(0px, (100% - 90rem) / 2) + var(--pad));
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.label {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* Editorial portrait: restrained radius, no shadow, dimmed like the hero. */
+.portrait {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--color-ink-900);
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.photo {
+  object-fit: cover;
+  object-position: 50% 6%;
+  filter: brightness(0.82) saturate(0.82) contrast(0.96);
+}
+
+.text {
+  display: grid;
+  align-content: start;
+  row-gap: var(--space-10);
+}
+
+.statement {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  color: var(--color-text);
+  text-wrap: balance;
+}
+
+.paragraphs {
+  display: grid;
+  row-gap: var(--space-6);
+}
+
+.paragraph {
+  margin: 0;
+  max-width: 34rem;
+  font-size: var(--text-body-lg);
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  text-wrap: pretty;
+}
+
+/* The roles: a quiet ruled list under the text. */
+.rolesLabel {
+  margin: 0 0 var(--space-4);
+  max-width: none;
+  font-size: var(--text-label);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.rolesList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.role {
+  padding-block: var(--space-3);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--text-body-lg);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+@media (min-width: 768px) {
+  .about {
+    --pad: var(--page-padding-tablet);
+
+    row-gap: var(--space-12);
+    padding-block: var(--space-30) var(--space-36);
+  }
+
+  .portrait {
+    max-width: 36rem;
+  }
+
+  /* Two columns of four. */
+  .rolesList {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-8);
+    border-bottom: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about {
+    --pad: var(--page-padding-desktop);
+
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-6);
+    row-gap: var(--space-16);
+    padding-block: var(--space-36);
+  }
+
+  .label {
+    grid-column: 1 / -1;
+  }
+
+  .portrait {
+    grid-column: 1 / span 5;
+    max-width: none;
+  }
+
+  .text {
+    grid-column: 7 / -1;
+    row-gap: var(--space-12);
+  }
+}
