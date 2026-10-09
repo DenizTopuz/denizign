@@ -1,0 +1,198 @@
+/*
+ * Working between the layers. Warm-white canvas, typography and rules only.
+ * Mobile first: everything stacks. From 1024px the support copy is offset to
+ * the right and the six layers become one horizontal sequence.
+ */
+
+.layers {
+  --pad: var(--page-padding-mobile);
+
+  /* Full-width line between sections: the section's own top edge. */
+  border-top: 1px solid var(--color-text);
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: var(--space-12);
+  /* The content is centred in a 90rem box on very wide screens; the section
+     itself (background, top line) stays full width. */
+  padding-block: var(--space-24) var(--space-30);
+  padding-inline: calc(max(0px, (100% - 90rem) / 2) + var(--pad));
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.label {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* Level 1: the positioning statement. Oversized, not held to a reading width. */
+.statement {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-display);
+  font-size: var(--text-display-l);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--color-text);
+  text-wrap: balance;
+}
+
+/* One phrase carries the accent. */
+.accent {
+  color: var(--color-accent);
+}
+
+/* Level 2: the short explanation */
+.support {
+  display: grid;
+  gap: var(--space-6);
+  max-width: 34rem;
+}
+
+.lead {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.copy {
+  margin: 0;
+  max-width: none;
+  font-size: var(--text-body-lg);
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  text-wrap: pretty;
+}
+
+/* Level 3: the six layers */
+.system {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.caption {
+  margin: 0;
+  max-width: 40rem;
+  text-wrap: pretty;
+  font-size: var(--text-body);
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.item {
+  display: grid;
+  grid-template-columns: var(--space-12) minmax(0, 1fr);
+  align-items: baseline;
+  padding-block: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+
+/* The small red number, as in Services and Selected Work. */
+.number {
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+@media (min-width: 768px) {
+  .layers {
+    --pad: var(--page-padding-tablet);
+
+    row-gap: var(--space-16);
+    padding-block: var(--space-30) var(--space-36);
+  }
+
+  .statement {
+    font-size: var(--text-display-l);
+  }
+
+  /* Tablet: two rows of three. */
+  .list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: var(--space-6);
+    border-bottom: 0;
+  }
+
+  .item {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--space-3);
+    padding-block: var(--space-6) var(--space-10);
+  }
+}
+
+@media (min-width: 1024px) {
+  .layers {
+    --pad: var(--page-padding-desktop);
+
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-6);
+    row-gap: var(--space-16);
+    padding-block: var(--space-36);
+  }
+
+  .label {
+    grid-column: 1 / -1;
+  }
+
+  .statement {
+    grid-column: 1 / -1;
+    font-size: var(--text-display-xl);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+  }
+
+  /* The explanation starts at the fifth of twelve columns, as in the Intro. */
+  .support {
+    grid-column: 5 / span 7;
+    max-width: none;
+    margin-top: var(--space-4);
+  }
+
+  .system {
+    grid-column: 1 / -1;
+    margin-top: var(--space-8);
+  }
+}
+
+/* One horizontal sequence of six, from a width where the names fit. */
+@media (min-width: 1280px) {
+  .list {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .name {
+    font-size: var(--text-h4);
+  }
+}

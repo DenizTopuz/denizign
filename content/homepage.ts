@@ -32,3 +32,18 @@ export const services: Service[] = [
       "User research, usability testing, synthesis and workshops that turn insight into product decisions.",
   },
 ];
+
+/*
+ * Working between the layers: the canonical six layers from
+ * brand/brand-foundation.md ("Deniz operates across several layers").
+ * The legacy five-layer model (Users, Experience, Product, Technology,
+ * Systems) must not be used.
+ */
+export const layers = [
+  "User experience",
+  "Product",
+  "Technology",
+  "Design systems",
+  "Organisation",
+  "Strategy",
+] as const;
