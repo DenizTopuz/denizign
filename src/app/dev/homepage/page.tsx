@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { HeroStudyB } from "@/components/sections/HeroStudyB";
 import { HomepageIntro } from "@/components/sections/HomepageIntro";
+import { HomepageServices } from "@/components/sections/HomepageServices";
+import { HomepageWork } from "@/components/sections/HomepageWork";
 import styles from "./homepage.module.css";
 
 export const metadata: Metadata = {
@@ -17,8 +19,12 @@ export default function HomepagePreview() {
 
       <HomepageIntro />
 
-      <div id="work" className={styles.marker}>
-        <p className={styles.caption}>Next: Selected Work</p>
+      <HomepageServices />
+
+      <HomepageWork />
+
+      <div className={styles.marker}>
+        <p className={styles.caption}>Next: Working between the layers</p>
       </div>
     </main>
   );

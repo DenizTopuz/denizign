@@ -1,9 +1,17 @@
 /* Intro. Warm-white scene after the dark hero. Mobile first. */
 
 .intro {
+  --pad: var(--page-padding-mobile);
+
+  /* Full-width line between sections: it is the section's own top edge, so it
+     runs from screen edge to screen edge. */
+  border-top: 1px solid var(--color-text);
   display: grid;
   gap: var(--space-10);
-  padding: var(--space-24) var(--page-padding-mobile) var(--space-30);
+  /* The content is centred in a 90rem box on very wide screens; the section
+     itself (background, top line) stays full width. */
+  padding-block: var(--space-24) var(--space-30);
+  padding-inline: calc(max(0px, (100% - 90rem) / 2) + var(--pad));
   background: var(--color-bg);
   color: var(--color-text);
 }
@@ -92,14 +100,18 @@
 @media (min-width: 768px) {
   .intro {
     gap: var(--space-12);
-    padding: var(--space-30) var(--page-padding-tablet) var(--space-36);
+    --pad: var(--page-padding-tablet);
+
+    padding-block: var(--space-30) var(--space-36);
   }
 }
 
 @media (min-width: 1024px) {
   .intro {
     gap: var(--space-16);
-    padding: var(--space-36) var(--page-padding-desktop) var(--space-48);
+    --pad: var(--page-padding-desktop);
+
+    padding-block: var(--space-36) var(--space-48);
   }
 
   .statement {

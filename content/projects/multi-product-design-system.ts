@@ -7,9 +7,9 @@ export const multiProductDesignSystem: ConceptProject = {
   status: "concept",
   year: null,
   role: "Design System Lead",
-  domain: ["Design Systems", "Accessibility", "Product Scale"],
+  domain: ["Design Systems", "Accessibility", "Scale"],
   summary:
-    "A shared design system for multiple digital products and teams, designed to improve consistency while leaving enough flexibility for different product contexts.",
+    "A shared design system for multiple digital products and teams, designed to improve consistency while allowing flexibility across different product contexts.",
   challenge:
     "Different teams are building related products independently, causing inconsistent interaction patterns, duplicated work and accessibility risks.",
   complexity: [

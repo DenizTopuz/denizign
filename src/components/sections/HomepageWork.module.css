@@ -1,0 +1,268 @@
+/*
+ * Selected Work. Warm-white canvas, no cards. All three projects share one
+ * composition: a text column (number, title, description, then role, domain
+ * and status) beside a large interface visual. On mobile the visual follows
+ * the text.
+ */
+
+.work {
+  --pad: var(--page-padding-mobile);
+
+  /* Full-width line between sections: it is the section's own top edge, so it
+     runs from screen edge to screen edge. */
+  border-top: 1px solid var(--color-text);
+
+  /* The content is centred in a 90rem box on very wide screens; the section
+     itself (background, top line) stays full width. */
+  padding-block: var(--space-12) var(--space-30);
+  padding-inline: calc(max(0px, (100% - 90rem) / 2) + var(--pad));
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.inner {
+  max-width: 90rem;
+}
+
+/* Section introduction */
+
+.head {
+  display: grid;
+  gap: var(--space-4);
+  margin-bottom: var(--space-24);
+}
+
+.label {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.lede {
+  margin: 0;
+  max-width: 28rem;
+  font-size: var(--text-lead);
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+/* Projects */
+
+.project {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: var(--space-10);
+}
+
+.project + .project {
+  margin-top: var(--space-24);
+  padding-top: var(--space-12);
+  border-top: 1px solid var(--color-border);
+}
+
+.text {
+  display: grid;
+  align-content: start;
+}
+
+/* The small red number */
+.index {
+  margin: 0 0 var(--space-4);
+  max-width: none;
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+}
+
+.title {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  color: var(--color-text);
+  text-wrap: balance;
+}
+
+.summary {
+  margin: var(--space-6) 0 0;
+  max-width: 34rem;
+  font-size: var(--text-body-lg);
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+.soon {
+  margin: var(--space-4) 0 0;
+  max-width: none;
+  font-size: var(--text-small);
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+/* Role, domain and status: quiet rows directly under the description */
+
+.meta {
+  margin: var(--space-10) 0 0;
+  padding: 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.metaRow {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  column-gap: var(--space-4);
+  align-items: baseline;
+  padding-block: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.meta dt {
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.meta dd {
+  margin: 0;
+  font-size: var(--text-body);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+/* Visuals: large, no shadow, edge to edge on mobile */
+
+.visual {
+  position: relative;
+  margin: 0 calc(var(--pad) * -1);
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--color-ink-900);
+}
+
+.visualLight {
+  background: var(--color-surface-0);
+  border-block: 1px solid var(--color-border);
+}
+
+/*
+ * On a phone the interface is too detailed to fit at 390px, so it is shown at
+ * a readable scale and can be panned sideways. The visual is conceptual, so
+ * the part in view carries the idea.
+ */
+@media (max-width: 767px) {
+  .visual {
+    aspect-ratio: auto;
+    height: 26rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .visual::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Width = height x ratio, so the interface keeps its proportions and is
+     wider than the screen. */
+  .visual > svg {
+    width: calc(26rem * var(--visual-ratio, 1.6));
+    height: 100%;
+    max-width: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .work {
+    --pad: var(--page-padding-tablet);
+  }
+
+  .visual {
+    aspect-ratio: var(--visual-ratio, 1.6);
+  }
+
+  .project + .project {
+    margin-top: var(--space-30);
+    padding-top: var(--space-16);
+  }
+}
+
+/* Desktop: text column on the left, a large visual running to the right edge */
+
+@media (min-width: 1024px) {
+  .work {
+    --pad: var(--page-padding-desktop);
+
+    padding-bottom: var(--space-48);
+  }
+
+  .head {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-6);
+    align-items: baseline;
+    margin-bottom: var(--space-30);
+  }
+
+  .label {
+    grid-column: 1 / span 4;
+  }
+
+  .lede {
+    grid-column: 5 / span 6;
+  }
+
+  .project {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-6);
+    row-gap: 0;
+    align-items: start;
+  }
+
+  .project + .project {
+    margin-top: var(--space-36);
+    padding-top: var(--space-16);
+  }
+
+  .text {
+    grid-column: 1 / span 4;
+  }
+
+  /* The visual spans the other eight columns and bleeds off the right edge. */
+  .visual {
+    grid-column: 5 / -1;
+    margin: 0 calc(var(--pad) * -1) 0 0;
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
+    border-inline: 0;
+  }
+
+  .visualLight {
+    border-block: 1px solid var(--color-border);
+    border-left: 1px solid var(--color-border);
+  }
+}
+
+/*
+ * Beyond the 90rem box the visual no longer touches the screen edge, so it
+ * gets its full radius and a closing border on the right.
+ */
+@media (min-width: 90.0625rem) {
+  .visual {
+    border-radius: var(--radius-md);
+  }
+
+  .visualLight {
+    border-right: 1px solid var(--color-border);
+  }
+}

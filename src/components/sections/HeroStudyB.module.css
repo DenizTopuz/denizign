@@ -140,9 +140,6 @@
 
 @media (min-width: 1024px) {
   .canvas {
-    /* How far the portrait moves left on screens wider than a laptop (1440). */
-    --wide-shift: max(0px, calc((100vw - 90rem) * 0.3));
-
     display: block;
     /* Fills the visitor's browser height, on any monitor. */
     height: 100svh;
@@ -160,9 +157,8 @@
        screen width (62.5vw = the 900px portrait at 1440px), so a tall
        monitor never pushes the face into the headline. */
     bottom: -8%;
-    /* A little left of the screen edge on a laptop, further left as the
-       screen gets wider. */
-    right: calc(-6% + 16px + var(--wide-shift));
+    /* Just past the screen edge on a laptop. */
+    right: calc(-6% + 16px);
     height: min(100%, 62.5vw);
     aspect-ratio: 1 / 1;
     margin: 0;
@@ -184,9 +180,14 @@
     will-change: transform;
   }
 
+  /* Navigation and text sit in a centred 90rem box on very wide screens, in
+     line with the sections below. The dark canvas and the portrait stay
+     full width. */
   .layer {
     position: absolute;
     inset: 0;
+    width: min(100%, 90rem);
+    margin-inline: auto;
     display: flex;
     flex-direction: column;
   }
@@ -238,6 +239,17 @@
 
 }
 
+/*
+ * Between 1280 and 1439px the headline is almost as wide as at 1440, but the
+ * portrait could grow with a tall window and reach into it. Cap the portrait
+ * so the headline always clears the ear: 740px at 1280, 900px at 1440.
+ */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .plane {
+    height: min(100%, 62.5vw, calc(100vw - 540px));
+  }
+}
+
 /* Small desktops: the headline is nearly as wide as the left half, so the
    portrait moves further right and the face stays clear of the text. */
 @media (min-width: 1024px) and (max-width: 1279px) {
@@ -246,10 +258,17 @@
   }
 }
 
-/* On screens wider than a laptop the portrait no longer touches the right
-   edge, so its right side fades into the canvas colour. */
+/*
+ * On screens wider than a laptop the portrait hangs on the same centred
+ * 90rem box as the text: it keeps the position and size it has at 1440px
+ * relative to that box (right edge 4.4rem past the box, 56.25rem = 900px
+ * high), so the face never moves into the headline. It no longer touches the
+ * screen edge, so its right side fades into the canvas colour.
+ */
 @media (min-width: 90.0625rem) {
   .plane {
+    right: calc((100% - 90rem) / 2 - 4.4rem);
+    height: min(100%, 56.25rem);
     -webkit-mask-image: linear-gradient(
       to right,
       transparent 0%,

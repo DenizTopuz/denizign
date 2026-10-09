@@ -8,7 +8,7 @@ export const operationalDecisionConsole: ConceptProject = {
   status: "concept",
   year: null,
   role: "Product UX Lead",
-  domain: ["Operations", "Incidents", "AI-assisted decision support"],
+  domain: ["Operations", "Incidents", "Decision support"],
   summary:
     "An operational workspace that helps teams understand incidents, assess urgency and coordinate the next action without losing context.",
   challenge:

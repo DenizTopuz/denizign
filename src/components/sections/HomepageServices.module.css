@@ -1,0 +1,138 @@
+/*
+ * Services. Warm-white canvas, ruled rows instead of cards. Mobile first:
+ * number, title and description stack. From 1024px each row is one wide line:
+ * number, a large title, and a quiet description on the right.
+ */
+
+.services {
+  --pad: var(--page-padding-mobile);
+
+  /* Full-width line between sections: it is the section's own top edge, so it
+     runs from screen edge to screen edge. */
+  border-top: 1px solid var(--color-text);
+
+  /* The content is centred in a 90rem box on very wide screens; the section
+     itself (background, top line) stays full width. */
+  padding-block: var(--space-24);
+  padding-inline: calc(max(0px, (100% - 90rem) / 2) + var(--pad));
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.label {
+  margin: 0 0 var(--space-12);
+  max-width: none;
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: 90rem;
+  /* The closing hairline hands over to Selected Work. */
+  border-bottom: 1px solid var(--color-border);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: var(--space-4);
+  padding-block: var(--space-10);
+  border-top: 1px solid var(--color-border);
+}
+
+/* The small red number, as in Selected Work. */
+.number {
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+}
+
+.title {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  color: var(--color-text);
+  text-wrap: balance;
+}
+
+.description {
+  margin: var(--space-2) 0 0;
+  max-width: 30rem;
+  font-size: var(--text-body-lg);
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 768px) {
+  .services {
+    --pad: var(--page-padding-tablet);
+
+    padding-top: var(--space-30);
+    padding-bottom: var(--space-30);
+  }
+
+  .row {
+    padding-block: var(--space-12);
+  }
+}
+
+@media (min-width: 1024px) {
+  .services {
+    --pad: var(--page-padding-desktop);
+
+    padding-top: var(--space-36);
+    padding-bottom: var(--space-30);
+  }
+
+  .label {
+    margin-bottom: var(--space-16);
+  }
+
+  .row {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-6);
+    /* Number, title and description all start at the top of the row. */
+    align-items: start;
+    padding-block: var(--space-12);
+  }
+
+  /*
+   * Optical alignment: the number and the description start at the height of
+   * the small (lowercase) letters of the title, i.e. its x-height line. In
+   * the title that line is 0.3428em below the top of its line box. The number
+   * and the description have 6.14px and 7.35px of space above their capitals,
+   * so each is nudged down by the difference. The formulas follow the title
+   * size at every width.
+   */
+  .number {
+    grid-column: 1 / span 1;
+    margin-top: calc(var(--text-h1) * 0.3428 - 0.384rem);
+  }
+
+  /* A large, single-line-feeling title across seven columns. */
+  .title {
+    grid-column: 2 / span 7;
+    font-size: var(--text-h1);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .description {
+    grid-column: 9 / -1;
+    margin: calc(var(--text-h1) * 0.3428 - 0.4596rem) 0 0;
+    max-width: none;
+  }
+}
