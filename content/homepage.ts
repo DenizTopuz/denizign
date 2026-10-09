@@ -47,3 +47,28 @@ export const layers = [
   "Organisation",
   "Strategy",
 ] as const;
+
+/*
+ * Method: HOW Deniz works. The four steps and their one-line definitions are
+ * taken word for word from brand/brand-foundation.md ("Method").
+ * Services (what he does) must not repeat these.
+ */
+export const method: Service[] = [
+  {
+    title: "Understand",
+    description: "Understand users, context, systems and the actual problem.",
+  },
+  {
+    title: "Connect",
+    description: "Connect users, stakeholders, product, design and technology.",
+  },
+  {
+    title: "Simplify",
+    description: "Turn complex information and flows into clear experiences.",
+  },
+  {
+    title: "Scale",
+    description:
+      "Create solutions, systems and patterns that work beyond one screen or one team.",
+  },
+];
