@@ -19,6 +19,10 @@
   order: 2;
   margin: var(--space-8) 0 0;
   aspect-ratio: 4 / 5;
+  /* Parallax: the portrait scrolls a little slower than the page. The
+     number --hero-scroll is set by HeroParallax (unset = no movement). */
+  transform: translate3d(0, calc(var(--hero-scroll, 0) * 0.1px), 0);
+  will-change: transform;
 }
 
 /* Slightly dimmed and desaturated: the portrait sits quieter in the hero but
@@ -168,6 +172,16 @@
 
   .photo {
     object-position: 50% 0%;
+  }
+
+  .plane {
+    transform: translate3d(0, calc(var(--hero-scroll, 0) * 0.14px), 0);
+  }
+
+  /* The text moves slightly faster than the page: depth against the portrait. */
+  .copy {
+    transform: translate3d(0, calc(var(--hero-scroll, 0) * -0.05px), 0);
+    will-change: transform;
   }
 
   .layer {

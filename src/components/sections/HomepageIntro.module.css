@@ -1,0 +1,118 @@
+/* Intro. Warm-white scene after the dark hero. Mobile first. */
+
+.intro {
+  display: grid;
+  gap: var(--space-10);
+  padding: var(--space-24) var(--page-padding-mobile) var(--space-30);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.label {
+  margin: 0;
+  max-width: none;
+  font-size: var(--text-label);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* The statement is the scene: oversized, not held to a reading width. */
+.statement {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  color: var(--color-text);
+  text-wrap: balance;
+}
+
+/* One phrase carries the accent. */
+.accent {
+  color: var(--color-accent);
+}
+
+.support {
+  display: grid;
+  gap: var(--space-8);
+  justify-items: start;
+  margin-top: var(--space-6);
+}
+
+/* While the statement is still lighting up, the supporting block is hidden.
+   It fades in as a whole when the last letter is lit, and back out if the
+   visitor scrolls up again. Keyboard focus always shows it. */
+.intro[data-reveal-state] .support {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-slow) var(--ease-out);
+}
+
+.intro[data-reveal-state="done"] .support,
+.intro[data-reveal-state] .support:focus-within {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.copy {
+  margin: 0;
+  max-width: 32rem;
+  font-size: var(--text-lead);
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--space-12);
+  font-size: var(--text-body);
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.linkText {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--color-accent);
+  text-underline-offset: 0.3em;
+}
+
+.link:hover {
+  color: var(--color-accent);
+}
+
+@media (min-width: 768px) {
+  .intro {
+    gap: var(--space-12);
+    padding: var(--space-30) var(--page-padding-tablet) var(--space-36);
+  }
+}
+
+@media (min-width: 1024px) {
+  .intro {
+    gap: var(--space-16);
+    padding: var(--space-36) var(--page-padding-desktop) var(--space-48);
+  }
+
+  .statement {
+    font-size: var(--text-display-l);
+    line-height: 1;
+    /* About 1230px at 1440: wide and dominant, with air on the right. */
+    max-width: 17em;
+  }
+
+  /* The supporting copy starts at the fifth of twelve columns. */
+  .support {
+    margin-top: var(--space-8);
+    margin-left: calc((100% + var(--space-6)) * 5 / 12);
+    max-width: 34rem;
+  }
+}

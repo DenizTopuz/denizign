@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { HeroStudyB } from "@/components/sections/HeroStudyB";
+import { HomepageIntro } from "@/components/sections/HomepageIntro";
 import styles from "./homepage.module.css";
 
 export const metadata: Metadata = {
@@ -13,6 +14,8 @@ export default function HomepagePreview() {
     <main id="main-content">
       <p className={styles.caption}>Hero</p>
       <HeroStudyB />
+
+      <HomepageIntro />
 
       <div id="work" className={styles.marker}>
         <p className={styles.caption}>Next: Selected Work</p>

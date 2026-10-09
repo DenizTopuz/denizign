@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { SiteNavigation } from "./SiteNavigation";
+import { HeroParallax } from "./HeroParallax";
 import styles from "./HeroStudyB.module.css";
 
 /*
@@ -15,6 +16,8 @@ export function HeroStudyB() {
       data-study="b"
       aria-labelledby="study-b-title"
     >
+      <HeroParallax />
+
       <figure className={styles.plane}>
         <Image
           src="/images/deniz-topuz-hero.png"

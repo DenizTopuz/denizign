@@ -1,0 +1,32 @@
+/*
+ * Letter-by-letter scroll reveal. Without the data-reveal switch (no
+ * JavaScript, or reduced motion) every letter keeps its final colour.
+ */
+
+.word {
+  /* Words never break across lines, only between words. */
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.letter {
+  color: inherit;
+}
+
+.accent {
+  color: var(--color-accent);
+}
+
+/* The dimmed starting state: light grey, still visible on warm white. */
+.root[data-reveal="on"] .letter {
+  color: var(--reveal-dim, var(--color-border));
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.root[data-reveal="on"] .letter.lit {
+  color: var(--color-text);
+}
+
+.root[data-reveal="on"] .letter.lit.accent {
+  color: var(--color-accent);
+}
