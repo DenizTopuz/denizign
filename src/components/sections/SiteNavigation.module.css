@@ -67,8 +67,7 @@
   color: var(--color-text);
 }
 
-.dark .name,
-.blend .name {
+.dark .name {
   color: var(--color-surface-50);
 }
 
@@ -99,15 +98,6 @@
 
 .dark .link:hover {
   color: var(--color-surface-50);
-}
-
-/* Over photography the links invert, so they stay legible on both grounds. */
-.blend .links {
-  mix-blend-mode: difference;
-}
-
-.blend .link {
-  color: var(--color-surface-0);
 }
 
 @media (max-width: 359px) {

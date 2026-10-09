@@ -27,7 +27,7 @@ export function HeroStudyB() {
       </figure>
 
       <div className={styles.layer}>
-        <SiteNavigation tone="dark" wide />
+        <SiteNavigation tone="dark" wide brand />
 
         <div className={styles.grid}>
           <div className={styles.copy}>
@@ -46,28 +46,18 @@ export function HeroStudyB() {
               <span className={styles.lineA}>Complex systems.</span>
               <span className={styles.lineB}>Clear experiences.</span>
             </h2>
+
+            <div className={styles.actions}>
+              <a href="#work" className={styles.primary}>
+                View selected work
+                <span aria-hidden="true">→</span>
+              </a>
+              <a href="#contact" className={styles.secondary}>
+                Get in touch
+              </a>
+            </div>
           </div>
 
-          <div className={styles.actions}>
-            <a href="#work" className={styles.primary}>
-              View selected work
-              <span aria-hidden="true">→</span>
-            </a>
-            <a href="#contact" className={styles.secondary}>
-              Get in touch
-            </a>
-          </div>
-
-          <dl className={styles.meta}>
-            <div>
-              <dt>Based</dt>
-              <dd>Netherlands</dd>
-            </div>
-            <div>
-              <dt>Focus</dt>
-              <dd>UX Lead · Product Experience</dd>
-            </div>
-          </dl>
         </div>
       </div>
     </section>

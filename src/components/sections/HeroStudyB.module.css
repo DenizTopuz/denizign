@@ -1,4 +1,5 @@
-/* Study B. Near-black canvas. Mobile first: text, then the portrait. */
+/* Study B. Near-black canvas. Desktop: portrait right, text left. Below
+   1024px see the mobile block at the end of the file. */
 
 .canvas {
   position: relative;
@@ -20,9 +21,12 @@
   aspect-ratio: 4 / 5;
 }
 
+/* Slightly dimmed and desaturated: the portrait sits quieter in the hero but
+   still looks natural. */
 .photo {
   object-fit: cover;
   object-position: 50% 10%;
+  filter: brightness(0.82) saturate(0.82) contrast(0.96);
 }
 
 .copy {
@@ -124,28 +128,6 @@
   color: var(--color-surface-50);
 }
 
-.meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-6) var(--space-12);
-  margin: 0;
-}
-
-.meta dt {
-  font-size: var(--text-label);
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-ink-300);
-}
-
-.meta dd {
-  margin: var(--space-1) 0 0;
-  font-size: var(--text-body);
-  font-weight: 500;
-  color: var(--color-surface-50);
-}
-
 @media (min-width: 768px) {
   .grid {
     padding-inline: var(--page-padding-tablet);
@@ -154,10 +136,13 @@
 
 @media (min-width: 1024px) {
   .canvas {
+    /* How far the portrait moves left on screens wider than a laptop (1440). */
+    --wide-shift: max(0px, calc((100vw - 90rem) * 0.3));
+
     display: block;
+    /* Fills the visitor's browser height, on any monitor. */
     height: 100svh;
-    min-height: 44rem;
-    max-height: 64rem;
+    min-height: 40rem;
   }
 
   /*
@@ -167,9 +152,14 @@
    */
   .plane {
     position: absolute;
-    top: 8%;
-    right: -6%;
-    height: 100%;
+    /* Anchored to the bottom and bleeding 8% below it. Its size follows the
+       screen width (62.5vw = the 900px portrait at 1440px), so a tall
+       monitor never pushes the face into the headline. */
+    bottom: -8%;
+    /* A little left of the screen edge on a laptop, further left as the
+       screen gets wider. */
+    right: calc(-6% + 16px + var(--wide-shift));
+    height: min(100%, 62.5vw);
     aspect-ratio: 1 / 1;
     margin: 0;
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 18%);
@@ -226,17 +216,117 @@
     max-width: 26rem;
   }
 
+  /* The actions sit directly under the slogan. */
   .actions {
-    grid-column: 1;
-    grid-row: 2;
-    align-self: end;
+    order: 4;
+    margin-top: var(--space-4);
   }
 
-  .meta {
-    grid-column: 2;
-    grid-row: 2;
-    justify-self: end;
-    align-self: end;
-    text-align: right;
+}
+
+/* Small desktops: the headline is nearly as wide as the left half, so the
+   portrait moves further right and the face stays clear of the text. */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .plane {
+    right: -16%;
+  }
+}
+
+/* On screens wider than a laptop the portrait no longer touches the right
+   edge, so its right side fades into the canvas colour. */
+@media (min-width: 90.0625rem) {
+  .plane {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 18%,
+      black 86%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 18%,
+      black 86%,
+      transparent 100%
+    );
+  }
+}
+
+/*
+ * Mobile and tablet (below 1024px), top to bottom: navigation, the portrait
+ * centred, then the roles line, headline, slogan and actions, which start at
+ * chest height and overlap the lower part of the portrait. The wrappers around
+ * the text dissolve (display: contents), so the text blocks can be ordered and
+ * pulled up over the portrait.
+ */
+@media (max-width: 1023px) {
+  .canvas {
+    --pad: var(--page-padding-mobile);
+    /* The portrait is a square as wide as the screen (at most 36rem). */
+    --portrait: min(100vw, 36rem);
+
+    padding-bottom: var(--space-16);
+  }
+
+  .layer,
+  .grid,
+  .copy {
+    display: contents;
+  }
+
+  .layer > header {
+    order: 0;
+  }
+
+  .plane {
+    order: 1;
+    width: var(--portrait);
+    margin: var(--space-2) auto 0;
+    aspect-ratio: 1 / 1;
+    /* The portrait melts into the canvas below it and at its sides. */
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%),
+      linear-gradient(to bottom, black 72%, transparent 100%);
+    mask-image:
+      linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%),
+      linear-gradient(to bottom, black 72%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+
+  /* Positioned, so the text paints in front of the (positioned) portrait. */
+  .eyebrow,
+  .headline,
+  .lead,
+  .actions {
+    position: relative;
+  }
+
+  /* Pulled up by 14% of the portrait: the text starts just below the shirt button (at 83% of the portrait height). */
+  .eyebrow {
+    order: 2;
+    margin: calc(var(--portrait) * -0.14) var(--pad) 0;
+  }
+
+  .headline {
+    order: 3;
+    margin: var(--space-4) var(--pad) 0;
+  }
+
+  .lead {
+    order: 4;
+    margin: var(--space-10) var(--pad) 0;
+  }
+
+  .actions {
+    order: 5;
+    margin: var(--space-8) var(--pad) 0;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .canvas {
+    --pad: var(--page-padding-tablet);
   }
 }

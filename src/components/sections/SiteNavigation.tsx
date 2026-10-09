@@ -10,8 +10,8 @@ const links = [
 ];
 
 type SiteNavigationProps = {
-  /** light: on warm white. dark: on near-black. blend: inverts over photography. */
-  tone?: "light" | "dark" | "blend";
+  /** light: on warm white. dark: on near-black. */
+  tone?: "light" | "dark";
   /** Align to the viewport gutters instead of the 1280px container. */
   wide?: boolean;
   /** A larger mark with the name "Denizign" set next to it. */
