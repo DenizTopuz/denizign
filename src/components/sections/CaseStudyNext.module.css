@@ -1,0 +1,66 @@
+/* Next project. Warm white, one large link under a full-width rule. */
+
+.next {
+  --pad: var(--page-padding-mobile);
+
+  display: grid;
+  row-gap: var(--space-4);
+  padding-block: var(--space-16);
+  padding-inline: calc(max(0px, (100% - 90rem) / 2) + var(--pad));
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.label {
+  margin: 0;
+  max-width: none;
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  justify-self: start;
+  max-width: 100%;
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.title {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-decoration-color: var(--color-accent);
+  text-underline-offset: 0.2em;
+}
+
+.arrow {
+  color: var(--color-accent);
+}
+
+.link:hover .title {
+  text-decoration-color: var(--color-text);
+}
+
+@media (min-width: 768px) {
+  .next {
+    --pad: var(--page-padding-tablet);
+
+    padding-block: var(--space-24);
+  }
+}
+
+@media (min-width: 1024px) {
+  .next {
+    --pad: var(--page-padding-desktop);
+  }
+}

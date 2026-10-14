@@ -1,7 +1,10 @@
-import { getProject, statusLabel, type Project } from "../../../content/projects";
-import { ConsoleVisual } from "../projects/ConsoleVisual";
-import { MobilityVisual } from "../projects/MobilityVisual";
-import { SystemVisual } from "../projects/SystemVisual";
+import {
+  getProject,
+  statusLabel,
+  type Project,
+} from "../../../content/projects";
+import Link from "next/link";
+import { projectVisuals } from "../projects/projectVisuals";
 import styles from "./HomepageWork.module.css";
 
 /*
@@ -11,42 +14,23 @@ import styles from "./HomepageWork.module.css";
  * with a large interface visual beside it.
  *
  * All copy and status come from content/projects (concept cases for now).
- * The visuals are conceptual SVG interfaces. There are no links yet: no
- * case-study pages exist.
+ * The visuals are conceptual SVG interfaces, each linking to its case study.
+ * The whole block is one link: the text link is stretched over the article
+ * (a single, accessible link). The cue on the visual repeats it visually.
  */
 
-type Entry = {
-  slug: string;
-  number: string;
-  visual: React.ReactNode;
-  tone: "dark" | "light";
-  /** Native width / height of the visual, used to keep its proportions. */
-  ratio: number;
-};
-
-const entries: Entry[] = [
-  {
-    slug: "mobility-intelligence-platform",
-    number: "01",
-    visual: <MobilityVisual />,
-    tone: "dark",
-    ratio: 1.6,
-  },
-  {
-    slug: "operational-decision-console",
-    number: "02",
-    visual: <ConsoleVisual />,
-    tone: "light",
-    ratio: 1.333,
-  },
-  {
-    slug: "multi-product-design-system",
-    number: "03",
-    visual: <SystemVisual />,
-    tone: "light",
-    ratio: 1.6,
-  },
+const slugs = [
+  "redesign-online-video-platform",
+  "shorts",
+  "player-skin",
+  "content-protection",
+  "channels",
 ];
+
+const entries = slugs.map((slug, index) => ({
+  slug,
+  number: String(index + 1).padStart(2, "0"),
+}));
 
 function requireProject(slug: string): Project {
   const project = getProject(slug);
@@ -67,8 +51,9 @@ export function HomepageWork() {
           </p>
         </header>
 
-        {entries.map(({ slug, number, visual, tone, ratio }) => {
+        {entries.map(({ slug, number }) => {
           const project = requireProject(slug);
+          const { visual, tone, ratio } = projectVisuals[slug];
           const titleId = `work-title-${number}`;
           return (
             <article
@@ -82,7 +67,10 @@ export function HomepageWork() {
                   {project.title}
                 </h3>
                 <p className={styles.summary}>{project.summary}</p>
-                <p className={styles.soon}>Case study coming next</p>
+                <Link href={`/work/${slug}`} className={styles.more}>
+                  Read the case study
+                  <span aria-hidden="true">→</span>
+                </Link>
 
                 <dl className={styles.meta}>
                   <div className={styles.metaRow}>
@@ -93,10 +81,17 @@ export function HomepageWork() {
                     <dt>Domain</dt>
                     <dd>{project.domain.join(" · ")}</dd>
                   </div>
-                  <div className={styles.metaRow}>
-                    <dt>Status</dt>
-                    <dd>{statusLabel(project) ?? "Case study"}</dd>
-                  </div>
+                  {project.status === "verified" ? (
+                    <div className={styles.metaRow}>
+                      <dt>Year</dt>
+                      <dd>{project.year}</dd>
+                    </div>
+                  ) : (
+                    <div className={styles.metaRow}>
+                      <dt>Status</dt>
+                      <dd>{statusLabel(project) ?? "Case study"}</dd>
+                    </div>
+                  )}
                 </dl>
               </div>
 
@@ -107,6 +102,10 @@ export function HomepageWork() {
                 style={{ "--visual-ratio": ratio } as React.CSSProperties}
               >
                 {visual}
+                <span className={styles.cue} aria-hidden="true">
+                  View case study
+                  <span className={styles.cueArrow}>→</span>
+                </span>
               </figure>
             </article>
           );

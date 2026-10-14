@@ -1,0 +1,187 @@
+/*
+ * Case-study hero. Warm-white canvas. Title and summary on the left, role /
+ * domain / status rows on the right from 1024px. The visual follows below,
+ * edge to edge on mobile, with the same pan treatment as Selected Work.
+ */
+
+.hero {
+  --pad: var(--page-padding-mobile);
+
+  padding-inline: calc(max(0px, (100% - 90rem) / 2) + var(--pad));
+  padding-bottom: var(--space-16);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.head {
+  display: grid;
+  row-gap: var(--space-6);
+  padding-top: var(--space-16);
+}
+
+.label {
+  margin: 0;
+  max-width: none;
+  font-size: var(--text-label);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.title {
+  margin: 0;
+  max-width: 14ch;
+  font-family: var(--font-display);
+  font-size: var(--text-display-l);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--color-text);
+  text-wrap: balance;
+}
+
+.summary {
+  margin: 0;
+  max-width: 34rem;
+  font-size: var(--text-lead);
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+.meta {
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.metaRow {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  column-gap: var(--space-4);
+  align-items: baseline;
+  padding-block: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.meta dt {
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.meta dd {
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Visual */
+
+.visual {
+  position: relative;
+  margin: var(--space-12) calc(var(--pad) * -1) 0;
+  overflow: hidden;
+  background: var(--color-ink-900);
+}
+
+.visualLight {
+  background: var(--color-surface-0);
+  border-block: 1px solid var(--color-border);
+}
+
+.caption {
+  padding: var(--space-3) var(--pad);
+  font-size: var(--text-small);
+  color: var(--color-ink-300);
+  background: var(--color-ink-900);
+  border-top: 1px solid var(--color-ink-700);
+}
+
+.visualLight .caption {
+  color: var(--color-text-muted);
+  background: var(--color-surface-0);
+  border-top-color: var(--color-border);
+}
+
+/* Real project imagery: shown whole, on the light surface. */
+.photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 80svh;
+  object-fit: contain;
+}
+
+/* On a phone the interface is shown at a readable scale and can be panned. */
+@media (max-width: 767px) {
+  .visual > svg {
+    display: block;
+    width: calc(26rem * var(--visual-ratio, 1.6));
+    max-width: none;
+    height: 26rem;
+  }
+
+  .visual {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .visual::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero {
+    --pad: var(--page-padding-tablet);
+
+    padding-bottom: var(--space-24);
+  }
+
+  .head {
+    padding-top: var(--space-24);
+  }
+
+  .visual > svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: var(--visual-ratio, 1.6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    --pad: var(--page-padding-desktop);
+  }
+
+  .head {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-6);
+    row-gap: var(--space-8);
+    padding-top: var(--space-30);
+  }
+
+  .label,
+  .title,
+  .summary {
+    grid-column: 1 / span 8;
+  }
+
+  .meta {
+    grid-column: 9 / -1;
+    grid-row: 2 / span 2;
+    align-self: end;
+    margin: 0;
+  }
+
+  .visual {
+    margin-top: var(--space-16);
+    border-radius: var(--radius-md);
+    margin-inline: 0;
+    border-inline: 1px solid var(--color-border);
+  }
+}

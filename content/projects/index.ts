@@ -1,21 +1,25 @@
 import type { Project } from "./types";
-import { mobilityIntelligencePlatform } from "./mobility-intelligence-platform";
-import { operationalDecisionConsole } from "./operational-decision-console";
-import { multiProductDesignSystem } from "./multi-product-design-system";
+import { shorts } from "./shorts";
+import { playerSkin } from "./player-skin";
+import { contentProtection } from "./content-protection";
+import { channels } from "./channels";
+import { redesignOnlineVideoPlatform } from "./redesign-online-video-platform";
 
 export * from "./types";
 
 /*
  * Selected work, in homepage order.
  *
- * TEMPORARY: all three entries are concept cases (status: "concept").
- * To replace one with real work, swap the entry for a VerifiedProject in
- * this list. Nothing else in the site should need to change.
+ * Verified work comes first. The remaining entries are concept cases
+ * (status: "concept"). To replace a concept with real work, swap the entry
+ * for a VerifiedProject in this list and add its case study.
  */
 export const projects: Project[] = [
-  mobilityIntelligencePlatform,
-  operationalDecisionConsole,
-  multiProductDesignSystem,
+  redesignOnlineVideoPlatform,
+  shorts,
+  playerSkin,
+  contentProtection,
+  channels,
 ];
 
 export const getProject = (slug: string): Project | undefined =>

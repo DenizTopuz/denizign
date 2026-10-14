@@ -16,12 +16,15 @@ type SiteNavigationProps = {
   wide?: boolean;
   /** A larger mark with the name "Denizign" set next to it. */
   brand?: boolean;
+  /** Prefix for the in-page anchors, e.g. "/" when used on another route. */
+  anchorBase?: string;
 };
 
 export function SiteNavigation({
   tone = "light",
   wide = false,
   brand = false,
+  anchorBase = "",
 }: SiteNavigationProps) {
   return (
     <header className={wide ? styles.wide : "container"}>
@@ -44,7 +47,7 @@ export function SiteNavigation({
           <ul className={styles.links}>
             {links.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className={styles.link}>
+                <a href={`${anchorBase}${link.href}`} className={styles.link}>
                   {link.label}
                 </a>
               </li>

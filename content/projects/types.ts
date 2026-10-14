@@ -12,9 +12,7 @@ export type ProjectStatus = "concept" | "verified";
 
 /** Abstract interface placeholders used until real imagery exists. */
 export type PlaceholderVariant =
-  | "map-interface"
-  | "operations-console"
-  | "system-diagram";
+  "map-interface" | "operations-console" | "system-diagram";
 
 export type ProjectImage =
   /* Neutral, abstract placeholder. Never a fake client screenshot. */
