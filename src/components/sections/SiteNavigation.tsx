@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./SiteNavigation.module.css";
 
-const links = [
+const links: { href: string; label: string; page?: boolean }[] = [
   { href: "#work", label: "Work" },
   { href: "#approach", label: "Approach" },
-  { href: "#about", label: "About" },
+  { href: "/about", label: "About", page: true },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -47,7 +47,10 @@ export function SiteNavigation({
           <ul className={styles.links}>
             {links.map((link) => (
               <li key={link.href}>
-                <a href={`${anchorBase}${link.href}`} className={styles.link}>
+                <a
+                  href={link.page ? link.href : `${anchorBase}${link.href}`}
+                  className={styles.link}
+                >
                   {link.label}
                 </a>
               </li>

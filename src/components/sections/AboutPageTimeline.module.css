@@ -1,0 +1,461 @@
+/*
+ * The CV timeline. Warm white, ruled lists, one thin line with a red node per
+ * role. Mobile first: line at the left, content to its right, the period above
+ * each role. From 1024px the period sits in its own gutter.
+ */
+
+.cv {
+  --pad: var(--page-padding-mobile);
+
+  padding-block: var(--space-16) var(--space-24);
+  padding-inline: calc(max(0px, (100% - 90rem) / 2) + var(--pad));
+  border-top: 1px solid var(--color-ink-300);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.head {
+  display: grid;
+  row-gap: var(--space-6);
+  margin-bottom: var(--space-16);
+}
+
+.label {
+  margin: 0;
+  max-width: none;
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.title {
+  margin: 0;
+  max-width: 18ch;
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.profile {
+  margin: 0;
+  max-width: 40rem;
+  font-size: var(--text-body-lg);
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+/* Timeline */
+
+.timeline {
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 var(--space-8);
+  list-style: none;
+}
+
+/* The line. It draws with scroll where supported; otherwise it is simply there. */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: var(--space-2);
+  bottom: 0;
+  width: 1px;
+  background: var(--color-ink-300);
+  transform-origin: top;
+}
+
+.entry {
+  position: relative;
+  display: grid;
+  row-gap: var(--space-3);
+  padding-bottom: var(--space-16);
+}
+
+.entry:last-child {
+  padding-bottom: 0;
+}
+
+.node {
+  position: absolute;
+  left: calc(var(--space-8) * -1 - 4px);
+  top: 0.45rem;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.period {
+  margin: 0;
+  max-width: none;
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.body {
+  display: grid;
+  row-gap: var(--space-3);
+  min-width: 0;
+}
+
+.employer {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.roleTitle {
+  margin: 0;
+  max-width: none;
+  font-weight: 600;
+}
+
+.summary {
+  margin: var(--space-2) 0 0;
+  max-width: 40rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+.points {
+  display: grid;
+  row-gap: var(--space-2);
+  max-width: 40rem;
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  list-style: none;
+  line-height: 1.55;
+}
+
+.points li {
+  position: relative;
+  padding-left: var(--space-4);
+}
+
+.points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: var(--space-2);
+  height: 1px;
+  background: var(--color-text);
+}
+
+.projects {
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.project {
+  display: grid;
+  row-gap: var(--space-1);
+  padding-block: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.projectLink,
+.projectName {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  justify-self: start;
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.projectLink span {
+  color: var(--color-accent);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.projectLink:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+
+.projectLink:hover span {
+  transform: translateX(var(--space-1));
+}
+
+.projectDetail {
+  font-size: var(--text-small);
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+/* Education, certifications, skills, languages */
+
+.lists {
+  display: grid;
+  row-gap: var(--space-12);
+  margin-top: var(--space-24);
+}
+
+.group {
+  display: grid;
+  align-content: start;
+  row-gap: var(--space-4);
+  min-width: 0;
+}
+
+.groupLabel {
+  margin: 0;
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.ruled {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.ruled li {
+  display: grid;
+  row-gap: var(--space-1);
+  padding-block: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.ruledMain {
+  font-weight: 600;
+}
+
+.ruledMeta {
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+}
+
+/* The UX Certificate: one highlighted line above the course list. */
+.certificate {
+  display: grid;
+  row-gap: var(--space-1);
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--color-text);
+}
+
+.certTitle {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.download {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  justify-self: start;
+  min-height: var(--space-12);
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.25em;
+}
+
+.download span {
+  color: var(--color-accent);
+}
+
+.download:hover {
+  color: var(--color-accent);
+}
+
+.skills {
+  display: grid;
+  row-gap: var(--space-6);
+}
+
+.skillLabel {
+  margin: 0 0 var(--space-2);
+  font-weight: 600;
+}
+
+.skillList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skillList li {
+  border: 1px solid var(--color-ink-300);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-small);
+}
+
+.skillList li:not(:has(a)) {
+  padding: var(--space-1) var(--space-3);
+}
+
+.source {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.skillList li:has(a):hover {
+  border-color: var(--color-accent);
+}
+
+.source:hover {
+  color: var(--color-accent);
+}
+
+@media (min-width: 768px) {
+  .cv {
+    --pad: var(--page-padding-tablet);
+
+    padding-block: var(--space-24) var(--space-30);
+  }
+
+  .lists {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-12);
+  }
+
+  .group:nth-of-type(3) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cv {
+    --pad: var(--page-padding-desktop);
+  }
+
+  .head {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-6);
+  }
+
+  .label {
+    grid-column: 1 / -1;
+  }
+
+  .title {
+    grid-column: 1 / span 6;
+  }
+
+  .profile {
+    grid-column: 7 / span 5;
+    align-self: end;
+  }
+
+  .timeline {
+    padding-left: 0;
+  }
+
+  /* The line moves into the middle of the gutter, between period and content. */
+  .timeline::before {
+    left: calc(100% / 12 * 3 - var(--space-6) / 2);
+  }
+
+  .entry {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-6);
+  }
+
+  .period {
+    grid-column: 1 / span 3;
+    padding-top: 0.15rem;
+  }
+
+  .node {
+    left: calc(100% / 12 * 3 - var(--space-6) / 2 - 4px);
+  }
+
+  .body {
+    grid-column: 4 / -1;
+    padding-left: var(--space-6);
+  }
+
+  .lists {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-6);
+  }
+
+  .group {
+    grid-column: span 4;
+  }
+
+  .group:nth-of-type(3) {
+    grid-column: span 8;
+  }
+
+  .skills {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-6);
+  }
+}
+
+@keyframes draw-line {
+  from {
+    transform: scaleY(0);
+  }
+
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .timeline::before {
+      animation: draw-line linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 70%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projectLink span {
+    transition: none;
+  }
+}
+
+/*
+ * Section label: the "// What I do" marker is a real heading signal, so it is
+ * set large, in the display face and in the accent colour. At this size and
+ * weight the red also passes contrast on the dark sections (large text).
+ */
+.label {
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--color-accent);
+}

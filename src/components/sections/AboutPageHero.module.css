@@ -1,0 +1,184 @@
+/*
+ * About page hero. Warm white canvas, one very large statement, a small
+ * portrait chip beside the first line, two quiet columns underneath and a
+ * pill link. Typography and whitespace only: no cards.
+ */
+
+.hero {
+  --pad: var(--page-padding-mobile);
+
+  padding-inline: calc(max(0px, (100% - 90rem) / 2) + var(--pad));
+  padding-bottom: var(--space-24);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.inner {
+  display: grid;
+  row-gap: var(--space-10);
+  padding-top: var(--space-16);
+}
+
+.label {
+  margin: 0;
+  max-width: none;
+  font-size: var(--text-label);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.portrait {
+  width: 5rem;
+  aspect-ratio: 4 / 5;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--color-ink-900);
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 12%;
+}
+
+.statement {
+  margin: 0;
+  max-width: 20ch;
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.columns {
+  display: grid;
+  row-gap: var(--space-6);
+  max-width: 40rem;
+  font-size: var(--text-body-lg);
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+.columns p {
+  margin: 0;
+  max-width: none;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  min-height: var(--space-12);
+  padding: 0 var(--space-8);
+  border: 1px solid var(--color-text);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-body);
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+  transition:
+    color var(--duration-base) var(--ease-out) 120ms,
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.cta {
+  --fill: var(--color-accent);
+}
+
+.cta:hover,
+.cta:focus-visible {
+  border-color: var(--color-accent);
+  color: var(--color-surface-50);
+}
+
+@media (min-width: 768px) {
+  .hero {
+    --pad: var(--page-padding-tablet);
+
+    padding-bottom: var(--space-30);
+  }
+
+  .inner {
+    padding-top: var(--space-24);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    --pad: var(--page-padding-desktop);
+
+    padding-bottom: var(--space-36);
+  }
+
+  .inner {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-6);
+    row-gap: var(--space-12);
+    padding-top: var(--space-30);
+  }
+
+  .label {
+    grid-column: 1 / -1;
+  }
+
+  /* The portrait sits at the start of the first line, as an editorial chip. */
+  .portrait {
+    grid-column: 1 / span 1;
+    grid-row: 2;
+    align-self: start;
+    margin-top: var(--space-3);
+  }
+
+  .statement {
+    grid-column: 3 / -1;
+    grid-row: 2;
+    max-width: 22ch;
+    font-size: var(--text-display-l);
+    line-height: 1.02;
+  }
+
+  .columns {
+    grid-column: 3 / span 7;
+    grid-row: 3;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-8);
+    max-width: none;
+    font-size: var(--text-body);
+  }
+
+  .cta {
+    grid-column: 11 / -1;
+    grid-row: 3;
+    align-self: end;
+    justify-self: end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta {
+    transition: none;
+  }
+}
+
+/*
+ * Section label: the "// What I do" marker is a real heading signal, so it is
+ * set large, in the display face and in the accent colour. At this size and
+ * weight the red also passes contrast on the dark sections (large text).
+ */
+.label {
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--color-accent);
+}
