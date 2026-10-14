@@ -1,35 +1,45 @@
-import { SiteHeader } from "@/components/SiteHeader";
-import { Hero } from "@/components/Hero";
-import { ClientLogos } from "@/components/ClientLogos";
-import { SelectedWork } from "@/components/SelectedWork";
-import { LayerDiagram } from "@/components/LayerDiagram";
-import { MethodSection } from "@/components/MethodSection";
-import { Capabilities } from "@/components/Capabilities";
-import { AboutBlock } from "@/components/AboutBlock";
-import { ContactCTA } from "@/components/ContactCTA";
-import { SiteFooter } from "@/components/SiteFooter";
+import type { Metadata } from "next";
+import { HeroStudyB } from "@/components/sections/HeroStudyB";
+import { HomepageAbout } from "@/components/sections/HomepageAbout";
+import { HomepageContact } from "@/components/sections/HomepageContact";
+import { HomepageFooter } from "@/components/sections/HomepageFooter";
+import { HomepageIntro } from "@/components/sections/HomepageIntro";
+import { HomepageLayers } from "@/components/sections/HomepageLayers";
+import { HomepageMethod } from "@/components/sections/HomepageMethod";
+import { HomepageTestimonials } from "@/components/sections/HomepageTestimonials";
+import { HomepageServices } from "@/components/sections/HomepageServices";
+import { HomepageWork } from "@/components/sections/HomepageWork";
+
+export const metadata: Metadata = {
+  title: "Denizign — Deniz Topuz | UX Lead · Product Experience · Systems Thinking",
+  description:
+    "I connect users, product, technology and teams to turn complexity into intuitive digital experiences.",
+};
 
 export default function HomePage() {
   return (
     <>
-      <a href="#main-content" className="skip-link">
-        Skip to content
-      </a>
-
-      <SiteHeader />
-
       <main id="main-content">
-        <Hero />
-        <ClientLogos />
-        <SelectedWork />
-        <LayerDiagram />
-        <MethodSection />
-        <Capabilities />
-        <AboutBlock />
-        <ContactCTA />
+        <HeroStudyB />
+
+        <HomepageIntro />
+
+        <HomepageServices />
+
+        <HomepageWork />
+
+        <HomepageLayers />
+
+        <HomepageMethod />
+
+        <HomepageAbout />
+
+        <HomepageTestimonials />
+
+        <HomepageContact />
       </main>
 
-      <SiteFooter />
+      <HomepageFooter />
     </>
   );
 }
