@@ -1,0 +1,137 @@
+/* The menu that follows the page. Fixed to the top, fades in and out. */
+
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  opacity: 0;
+  translate: 0 -0.5rem;
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  transition:
+    opacity var(--duration-base) var(--ease-out),
+    translate var(--duration-base) var(--ease-out),
+    background-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out);
+}
+
+.bar[data-shown="true"] {
+  opacity: 1;
+  translate: 0 0;
+  pointer-events: auto;
+}
+
+/* The colour follows the section underneath. */
+.bar[data-tone="light"] {
+  background: color-mix(in srgb, var(--color-bg) 82%, transparent);
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.bar[data-tone="dark"] {
+  background: color-mix(in srgb, var(--color-ink-900) 82%, transparent);
+  color: var(--color-surface-50);
+  border-bottom: 1px solid var(--color-ink-700);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: var(--space-16);
+  padding-inline: var(--page-padding-mobile);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--space-12);
+  color: inherit;
+  text-decoration: none;
+}
+
+.mark {
+  display: block;
+  height: var(--space-8);
+  width: auto;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: var(--text-body);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--space-12);
+  font-size: var(--text-small);
+  font-weight: 500;
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.78;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.link:hover,
+.link:focus-visible {
+  opacity: 1;
+}
+
+.link:focus-visible,
+.logo:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* On a phone the mark alone keeps all four links on one line. */
+@media (max-width: 767px) {
+  .name {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .inner {
+    padding-inline: var(--page-padding-tablet);
+  }
+
+  .links {
+    gap: var(--space-8);
+  }
+
+  .link {
+    font-size: var(--text-body);
+  }
+}
+
+@media (min-width: 1024px) {
+  .inner {
+    padding-inline: var(--page-padding-desktop);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar {
+    transition: none;
+    translate: 0 0;
+  }
+}

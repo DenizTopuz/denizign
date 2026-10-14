@@ -1,5 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Manrope } from "next/font/google";
+import { StickyMenu } from "@/components/StickyMenu";
+import { FillPointer } from "@/components/FillPointer";
+import { ThemeColorSync } from "@/components/ThemeColorSync";
 import "@/styles/globals.css";
 
 const manrope = Manrope({
@@ -15,6 +18,12 @@ const inter = Inter({
   weight: ["400", "500", "600"],
   display: "swap",
 });
+
+/* The page opens on the near-black hero; ThemeColorSync follows the scroll. */
+export const viewport: Viewport = {
+  themeColor: "#111214",
+  colorScheme: "light",
+};
 
 export const metadata: Metadata = {
   title: "Denizign — Deniz Topuz | UX Lead · Product Experience · Systems Thinking",
@@ -36,7 +45,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${manrope.variable} ${inter.variable}`}>
-      <body>{children}</body>
+      <body>
+        <ThemeColorSync />
+        <FillPointer />
+        <StickyMenu />
+        {children}
+      </body>
     </html>
   );
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getProject, projects } from "../../../../content/projects";
 import { getCaseStudy } from "../../../../content/projects/case-studies";
+import { BackToTop } from "@/components/BackToTop";
 import { CaseStudyDirection } from "@/components/sections/CaseStudyDirection";
 import { CaseStudyHero } from "@/components/sections/CaseStudyHero";
 import { CaseStudyNarrative } from "@/components/sections/CaseStudyNarrative";
@@ -59,6 +60,7 @@ export default async function CaseStudyPage({
       </main>
 
       <HomepageFooter />
+      <BackToTop />
     </>
   );
 }

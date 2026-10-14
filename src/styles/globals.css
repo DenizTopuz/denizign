@@ -375,3 +375,46 @@ a {
     padding-block: 5.5rem;
   }
 }
+
+/*
+ * Filling pills: [data-fill] elements fill with --fill from the point where
+ * the pointer enters, and drain back towards the point where it leaves.
+ * FillPointer sets --fx / --fy. Transform only. Each component sets --fill
+ * and the hover text colour.
+ */
+[data-fill] {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+[data-fill]::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: var(--fx, 50%);
+  top: var(--fy, 50%);
+  width: 240%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--fill, var(--color-accent));
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform var(--duration-slow) var(--ease-out);
+  pointer-events: none;
+}
+
+[data-fill]:hover::before,
+[data-fill]:focus-visible::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-fill]::before {
+    transition: none;
+  }
+}
+
+/* Anchors stop below the menu that follows the page. */
+html {
+  scroll-padding-top: 5rem;
+}
