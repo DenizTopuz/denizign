@@ -26,7 +26,7 @@ export async function generateMetadata({
   const project = getProject(slug);
   if (!project) return {};
 
-  const url = `${site.url}/work/${project.slug}`;
+  const url = `${site.url}/work/${project.slug}/`;
   return {
     title: `${project.title}: case study`,
     description: project.summary,
@@ -50,7 +50,7 @@ export default async function CaseStudyPage({
   const study = getCaseStudy(slug);
   if (!project || !study) notFound();
 
-  const url = `${site.url}/work/${project.slug}`;
+  const url = `${site.url}/work/${project.slug}/`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [

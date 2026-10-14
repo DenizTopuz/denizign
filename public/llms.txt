@@ -4,14 +4,14 @@
 
 ## Pages
 - [Home](https://denizign.nl/): positioning, services, selected work, method and contact.
-- [About and CV](https://denizign.nl/about): experience at NDW, Blue Billywig, Wortell and PeopleWare; education; Nielsen Norman Group UX Certificate; skills; languages.
+- [About and CV](https://denizign.nl/about/): experience at NDW, Blue Billywig, Wortell and PeopleWare; education; Nielsen Norman Group UX Certificate; skills; languages.
 
 ## Selected work (case studies)
-- [Redesign Online Video Platform](https://denizign.nl/work/redesign-online-video-platform): media library and detail page on a new design system.
-- [Shorts](https://denizign.nl/work/shorts): short-form video created and embedded from an online video platform.
-- [Redesign the Player Skin](https://denizign.nl/work/player-skin): HTML5 video player skin for web and app.
-- [Content Protection](https://denizign.nl/work/content-protection): policies that decide who may watch a video.
-- [Channels](https://denizign.nl/work/channels): self-service builder for streaming-style video pages.
+- [Redesign Online Video Platform](https://denizign.nl/work/redesign-online-video-platform/): media library and detail page on a new design system.
+- [Shorts](https://denizign.nl/work/shorts/): short-form video created and embedded from an online video platform.
+- [Redesign the Player Skin](https://denizign.nl/work/player-skin/): HTML5 video player skin for web and app.
+- [Content Protection](https://denizign.nl/work/content-protection/): policies that decide who may watch a video.
+- [Channels](https://denizign.nl/work/channels/): self-service builder for streaming-style video pages.
 
 ## Facts
 - Roles: UX Designer, UX Lead, UX Architect, epic owner design system, product designer, consultant.

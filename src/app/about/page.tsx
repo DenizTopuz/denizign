@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "Deniz Topuz is a UX Lead, UX designer and UX architect in the Netherlands, epic owner of a design system at NDW. Experience at NDW, Blue Billywig, Wortell and PeopleWare, plus certifications and skills.",
   alternates: { canonical: "/about" },
-  openGraph: { type: "profile", url: `${site.url}/about` },
+  openGraph: { type: "profile", url: `${site.url}/about/` },
 };
 
 /* Structured data for search engines and AI assistants: verified facts only. */
