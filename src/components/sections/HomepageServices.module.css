@@ -9,7 +9,7 @@
 
   /* Full-width line between sections: it is the section's own top edge, so it
      runs from screen edge to screen edge. */
-  border-top: 1px solid var(--color-text);
+  border-top: 1px solid var(--color-ink-300);
 
   /* The content is centred in a 90rem box on very wide screens; the section
      itself (background, top line) stays full width. */
@@ -135,4 +135,19 @@
     margin: calc(var(--text-h1) * 0.3428 - 0.4596rem) 0 0;
     max-width: none;
   }
+}
+
+/*
+ * Section label: the "// What I do" marker is a real heading signal, so it is
+ * set large, in the display face and in the accent colour. At this size and
+ * weight the red also passes contrast on the dark sections (large text).
+ */
+.label {
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--color-accent);
 }

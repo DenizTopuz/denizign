@@ -92,8 +92,6 @@ export const about = {
     "Consultant",
     "Design System Lead",
     "Product / Epic Owner",
-    "Coach",
-    "Facilitator",
   ],
 };
 

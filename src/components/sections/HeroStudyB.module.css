@@ -98,38 +98,64 @@
   gap: var(--space-4) var(--space-8);
 }
 
+/* Two pills: the primary action is filled red, the secondary one a white
+   outline. */
 .primary,
 .secondary {
   display: inline-flex;
   align-items: center;
+  gap: var(--space-2);
   min-height: var(--space-12);
+  padding-inline: var(--space-8);
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
   font-size: var(--text-body);
   font-weight: 600;
   text-decoration: none;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-base) var(--ease-out) 120ms;
 }
 
 .primary {
-  gap: var(--space-2);
-  padding-inline: var(--space-6);
-  border: 1px solid var(--color-surface-50);
-  border-radius: var(--radius-xs);
+  border-color: var(--color-accent);
+  background: var(--color-accent);
   color: var(--color-surface-50);
+}
+
+.primary {
+  --fill: var(--color-accent-hover);
 }
 
 .primary:hover {
-  background: var(--color-surface-50);
-  color: var(--color-ink-900);
+  border-color: var(--color-accent-hover);
 }
 
 .secondary {
-  color: var(--color-ink-300);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.3em;
+  border-color: var(--color-surface-50);
+  color: var(--color-surface-50);
 }
 
-.secondary:hover {
-  color: var(--color-surface-50);
+.secondary {
+  --fill: var(--color-surface-50);
+}
+
+.secondary:hover,
+.secondary:focus-visible {
+  color: var(--color-ink-900);
+}
+
+.primary:focus-visible,
+.secondary:focus-visible {
+  outline: 2px solid var(--color-surface-50);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primary,
+  .secondary {
+    transition: none;
+  }
 }
 
 @media (min-width: 768px) {

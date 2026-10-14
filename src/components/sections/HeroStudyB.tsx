@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { contact } from "../../../content/homepage";
 import { SiteNavigation } from "./SiteNavigation";
 import { HeroParallax } from "./HeroParallax";
 import styles from "./HeroStudyB.module.css";
@@ -51,16 +52,19 @@ export function HeroStudyB() {
             </h2>
 
             <div className={styles.actions}>
-              <a href="#work" className={styles.primary}>
+              <a href="#work" className={styles.primary} data-fill>
                 View selected work
                 <span aria-hidden="true">→</span>
               </a>
-              <a href="#contact" className={styles.secondary}>
-                Get in touch
+              <a
+                href={`mailto:${contact.email}`}
+                className={styles.secondary}
+                data-fill
+              >
+                Let&apos;s talk
               </a>
             </div>
           </div>
-
         </div>
       </div>
     </section>
