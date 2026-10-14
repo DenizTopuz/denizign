@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { cv } from "../../../content/cv";
+import { site } from "../../../content/site";
 import { AboutPageHero } from "@/components/sections/AboutPageHero";
 import { AboutPageTimeline } from "@/components/sections/AboutPageTimeline";
 import { AboutPagePractice } from "@/components/sections/AboutPagePractice";
@@ -7,9 +8,11 @@ import { HomepageContact } from "@/components/sections/HomepageContact";
 import { HomepageFooter } from "@/components/sections/HomepageFooter";
 
 export const metadata: Metadata = {
-  title: "About — Denizign",
+  title: "About and CV: UX Lead, UX Designer, UX Architect",
   description:
-    "Deniz Topuz is a UX Lead based in the Netherlands, combining UX design with a technical front-end background.",
+    "Deniz Topuz is a UX Lead, UX designer and UX architect in the Netherlands, epic owner of a design system at NDW. Experience at NDW, Blue Billywig, Wortell and PeopleWare, plus certifications and skills.",
+  alternates: { canonical: "/about" },
+  openGraph: { type: "profile", url: `${site.url}/about` },
 };
 
 /* Structured data for search engines and AI assistants: verified facts only. */
@@ -19,7 +22,7 @@ const person = {
   name: cv.name,
   jobTitle: "UX Designer",
   worksFor: { "@type": "Organization", name: "NDW" },
-  url: cv.links.website,
+  url: site.url,
   email: cv.links.email,
   sameAs: [cv.links.linkedin],
   address: { "@type": "PostalAddress", addressCountry: "NL" },

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { site } from "../../../../content/site";
 import { getProject, projects } from "../../../../content/projects";
 import { getCaseStudy } from "../../../../content/projects/case-studies";
 import { BackToTop } from "@/components/BackToTop";
@@ -31,11 +32,17 @@ export async function generateMetadata({
   const project = getProject(slug);
   if (!project) return {};
 
+  const url = `${site.url}/work/${project.slug}`;
   return {
-    title: `${project.title} — Denizign`,
+    title: `${project.title}: case study`,
     description: project.summary,
-    /* Not indexed until the new site replaces the current homepage. */
-    robots: { index: false, follow: false },
+    alternates: { canonical: `/work/${project.slug}` },
+    openGraph: {
+      type: "article",
+      url,
+      title: `${project.title}: case study by Deniz Topuz`,
+      description: project.summary,
+    },
   };
 }
 
@@ -49,8 +56,45 @@ export default async function CaseStudyPage({
   const study = getCaseStudy(slug);
   if (!project || !study) notFound();
 
+  const url = `${site.url}/work/${project.slug}`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CreativeWork",
+        "@id": `${url}#work`,
+        name: project.title,
+        headline: project.title,
+        description: project.summary,
+        url,
+        inLanguage: "en",
+        author: { "@type": "Person", name: site.owner, url: site.url },
+        ...(project.status === "verified"
+          ? { dateCreated: project.year, about: [...project.domain] }
+          : {}),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: site.url },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Work",
+            item: `${site.url}/#work`,
+          },
+          { "@type": "ListItem", position: 3, name: project.title, item: url },
+        ],
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <main id="main-content">
         <CaseStudyHero project={project} />
         <CaseStudyNarrative study={study} />

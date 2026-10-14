@@ -46,10 +46,10 @@ export function HeroStudyB() {
               into intuitive digital experiences.
             </p>
 
-            <h2 id="study-b-title" className={styles.headline}>
+            <h1 id="study-b-title" className={styles.headline}>
               <span className={styles.lineA}>Complex systems.</span>
               <span className={styles.lineB}>Clear experiences.</span>
-            </h2>
+            </h1>
 
             <div className={styles.actions}>
               <a href="#work" className={styles.primary} data-fill>

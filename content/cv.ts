@@ -310,7 +310,7 @@ export const cv = {
     { language: "English", level: "Good" },
   ],
   links: {
-    website: "https://www.denizign.nl",
+    website: "https://denizign.nl",
     linkedin: "https://www.linkedin.com/in/deniztopuz/",
     email: "hello@denizign.nl",
   },

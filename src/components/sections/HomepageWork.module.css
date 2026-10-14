@@ -533,6 +533,9 @@
   to {
     transform: scale(0.94);
     opacity: 0;
+    /* Once covered, the sheet is also removed from keyboard and screen reader
+       reach, so focus can never land on something that cannot be seen. */
+    visibility: hidden;
   }
 }
 

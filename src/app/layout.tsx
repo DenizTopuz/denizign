@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Manrope } from "next/font/google";
 import { StickyMenu } from "@/components/StickyMenu";
+import { site } from "../../content/site";
 import { FillPointer } from "@/components/FillPointer";
 import { ThemeColorSync } from "@/components/ThemeColorSync";
 import "@/styles/globals.css";
@@ -26,19 +27,30 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Denizign — Deniz Topuz | UX Lead · Product Experience · Systems Thinking",
-  description:
-    "I connect users, product, technology and teams to turn complexity into intuitive digital experiences.",
+  metadataBase: new URL(site.url),
+  title: { default: site.title, template: `%s | ${site.name}` },
+  description: site.description,
+  applicationName: site.name,
+  authors: [{ name: site.owner, url: site.url }],
+  creator: site.owner,
+  alternates: { canonical: "/" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
   openGraph: {
-    title: "Denizign — Deniz Topuz",
-    description: "From complexity to clarity.",
     type: "website",
-    siteName: "Denizign",
+    siteName: site.name,
+    locale: site.locale,
+    url: site.url,
+    title: site.title,
+    description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Denizign — Deniz Topuz",
-    description: "From complexity to clarity.",
+    title: site.title,
+    description: site.description,
   },
 };
 

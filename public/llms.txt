@@ -1,0 +1,21 @@
+# Denizign: Deniz Topuz
+
+> Deniz Topuz is a UX Lead, UX designer and UX architect based in the Netherlands, and epic owner of a design system at NDW. He designs complex digital products: information hubs, dashboards, video platforms and design systems. Tagline: Complex systems. Clear experiences.
+
+## Pages
+- [Home](https://denizign.nl/): positioning, services, selected work, method and contact.
+- [About and CV](https://denizign.nl/about): experience at NDW, Blue Billywig, Wortell and PeopleWare; education; Nielsen Norman Group UX Certificate; skills; languages.
+
+## Selected work (case studies)
+- [Redesign Online Video Platform](https://denizign.nl/work/redesign-online-video-platform): media library and detail page on a new design system.
+- [Shorts](https://denizign.nl/work/shorts): short-form video created and embedded from an online video platform.
+- [Redesign the Player Skin](https://denizign.nl/work/player-skin): HTML5 video player skin for web and app.
+- [Content Protection](https://denizign.nl/work/content-protection): policies that decide who may watch a video.
+- [Channels](https://denizign.nl/work/channels): self-service builder for streaming-style video pages.
+
+## Facts
+- Roles: UX Designer, UX Lead, UX Architect, epic owner design system, product designer, consultant.
+- Current: NDW (since October 2024). Previously Blue Billywig (2020 to 2024), Wortell (2017 to 2020), PeopleWare (2011 to 2017).
+- Certification: Nielsen Norman Group UX Certificate (July 2026).
+- Languages: Dutch (native), English (good).
+- Contact: hello@denizign.nl, https://www.linkedin.com/in/deniztopuz/
