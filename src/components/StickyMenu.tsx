@@ -83,6 +83,12 @@ export function StickyMenu() {
       setShown(window.scrollY > window.innerHeight * 0.6);
       const el = bar.current;
       if (!el) return;
+      /* Reading progress for browsers without scroll-driven animations. */
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      el.style.setProperty(
+        "--read",
+        String(max > 0 ? Math.min(window.scrollY / max, 1) : 0),
+      );
       /* Sample just under the bar, so the bar's own background is ignored. */
       const bg = colourBelow(el.offsetHeight + 4);
       if (bg) setTone(luminance(bg) < 0.4 ? "dark" : "light");

@@ -448,3 +448,20 @@ html {
     }
   }
 }
+
+/* The same rise, for browsers without scroll-driven animations (see RiseFallback). */
+[data-rise-js] {
+  transition:
+    opacity var(--duration-slow) var(--ease-out),
+    transform var(--duration-slow) var(--ease-out);
+}
+
+[data-rise-js="pending"] {
+  opacity: 0;
+  transform: translateY(1.5rem);
+}
+
+[data-rise-js="in"] {
+  opacity: 1;
+  transform: none;
+}
