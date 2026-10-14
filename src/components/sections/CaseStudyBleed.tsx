@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Figure } from "../../../content/projects/case-studies";
+import { SwipeHint } from "../SwipeHint";
 import styles from "./CaseStudyBleed.module.css";
 
 /*
@@ -16,11 +17,15 @@ import styles from "./CaseStudyBleed.module.css";
 export function CaseStudyBleed({ figure }: { figure: Figure }) {
   return (
     <figure className={styles.bleed}>
-      <div className={`${styles.frame} ${figure.fit ? styles.fit : ""}`}>
+      <div
+        className={`${styles.frame} ${figure.fit ? styles.fit : ""}`}
+        data-wide={figure.width / figure.height > 2.4 ? "true" : "false"}
+      >
         {figure.fit ? (
           /* The scroller (for phones) sits inside the frame, so the page
              scroll, not the sideways scroller, drives the drift. */
           <div className={styles.fitScroll}>
+            <SwipeHint />
             <Image
               src={figure.src}
               width={figure.width}

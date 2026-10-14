@@ -1,0 +1,52 @@
+/* The "View" cursor: a red disc with white text, following the pointer. */
+
+.bubble {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-surface-50);
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform;
+}
+
+/* Scale and fade live on the inner label's parent via a second transform
+   property, so they never fight with the positioning transform. */
+.bubble {
+  scale: 0.6;
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    scale var(--duration-base) var(--ease-out);
+}
+
+.bubble[data-visible="true"] {
+  opacity: 1;
+  scale: 1;
+}
+
+.label {
+  font-family: var(--font-display);
+  font-size: var(--text-body-lg);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .bubble {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bubble {
+    transition: none;
+    scale: 1;
+  }
+}

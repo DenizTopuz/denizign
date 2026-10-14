@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { statusLabel, type Project } from "../../../content/projects";
 import { projectVisuals } from "../projects/projectVisuals";
 import { SiteNavigation } from "./SiteNavigation";
@@ -29,10 +30,19 @@ export function CaseStudyHero({ project }: { project: Project }) {
   ];
 
   return (
-    <section className={styles.hero} aria-labelledby="case-title">
-      <SiteNavigation tone="light" wide anchorBase="/" />
+    <section
+      id="top"
+      tabIndex={-1}
+      className={styles.hero}
+      aria-labelledby="case-title"
+    >
+      <SiteNavigation tone="light" wide brand anchorBase="/" />
 
       <div className={styles.head}>
+        <Link href="/#work" className={styles.back}>
+          <span aria-hidden="true">←</span>
+          All work
+        </Link>
         <p className={styles.label}>
           {"// Selected Work"}
           {concept ? " · Concept case" : null}

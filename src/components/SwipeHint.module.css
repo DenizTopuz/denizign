@@ -1,0 +1,100 @@
+/*
+ * Swipe hint. The anchor is sticky to the left edge of the scroller and as
+ * wide as the scroller's visible box (container query units), so the pill
+ * stays in view while the content beneath it can be panned.
+ */
+
+.anchor {
+  position: sticky;
+  left: 0;
+  z-index: 3;
+  display: none;
+  width: 100cqw;
+  height: 0;
+  pointer-events: none;
+}
+
+.anchor[data-state="ready"],
+.anchor[data-state="playing"] {
+  display: block;
+}
+
+.pill {
+  position: absolute;
+  left: 50%;
+  top: var(--hint-top, 9rem);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4) var(--space-2) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--color-ink-900);
+  color: var(--color-surface-50);
+  font-size: var(--text-small);
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+  translate: -50% 0;
+  opacity: 0;
+}
+
+.hand {
+  flex-shrink: 0;
+  color: var(--color-accent);
+}
+
+/* Fades in, stays for a few swipes, then rests out of the way. */
+.anchor[data-state="playing"] .pill {
+  animation: hint-life 6.5s var(--ease-out) 0.3s both;
+}
+
+.anchor[data-state="playing"] .hand {
+  animation: hint-swipe 1.6s ease-in-out 0.6s 3;
+}
+
+@keyframes hint-swipe {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-0.6rem);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes hint-life {
+  0% {
+    opacity: 0;
+  }
+
+  8%,
+  88% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .anchor,
+  .anchor[data-state="ready"] {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anchor[data-state="playing"] .hand {
+    animation: none;
+  }
+
+  .anchor[data-state="playing"] .pill {
+    animation: none;
+    opacity: 1;
+  }
+}

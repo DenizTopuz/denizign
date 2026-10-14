@@ -81,6 +81,7 @@
 }
 
 .fitScroll {
+  container-type: inline-size;
   display: grid;
   padding-block: var(--space-16);
   overflow-x: auto;
@@ -91,9 +92,13 @@
   display: none;
 }
 
+/*
+ * On a phone a sheet is fitted to the width. Only really wide images (wider
+ * than about 2.4 : 1) keep a readable size and can be panned, with a hint.
+ */
 .fit .image {
   position: static;
-  width: max(48rem, min(100%, 90rem));
+  width: 100%;
   max-width: none;
   height: auto;
   /* Tall sheets stay within one screen; the image is centred in its box. */
@@ -101,6 +106,18 @@
   margin-inline: auto;
   object-fit: contain;
   transform: none;
+}
+
+@media (max-width: 767px) {
+  .frame[data-wide="true"] .image {
+    width: 48rem;
+    max-height: none;
+  }
+
+  /* Fitted sheets are not panned, so they need no sideways scroller. */
+  .frame[data-wide="false"] .fitScroll {
+    overflow-x: visible;
+  }
 }
 
 @media (min-width: 768px) {

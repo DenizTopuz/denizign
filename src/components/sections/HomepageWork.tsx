@@ -4,6 +4,8 @@ import {
   type Project,
 } from "../../../content/projects";
 import Link from "next/link";
+import { ProjectCursor } from "../ProjectCursor";
+import { SwipeHint } from "../SwipeHint";
 import { projectVisuals } from "../projects/projectVisuals";
 import styles from "./HomepageWork.module.css";
 
@@ -15,8 +17,9 @@ import styles from "./HomepageWork.module.css";
  *
  * All copy and status come from content/projects (concept cases for now).
  * The visuals are conceptual SVG interfaces, each linking to its case study.
- * The whole block is one link: the text link is stretched over the article
- * (a single, accessible link). The cue on the visual repeats it visually.
+ * Each project is one framed block with an action row at the bottom. The
+ * whole block is one link: the action link is stretched over the article (a
+ * single, accessible link), so it also works without hover on touch.
  */
 
 const slugs = [
@@ -41,6 +44,7 @@ function requireProject(slug: string): Project {
 export function HomepageWork() {
   return (
     <section id="work" className={styles.work} aria-labelledby="work-label">
+      <ProjectCursor />
       <div className={styles.inner}>
         <header className={styles.head}>
           <h2 id="work-label" className={styles.label}>
@@ -56,58 +60,60 @@ export function HomepageWork() {
           const { visual, tone, ratio } = projectVisuals[slug];
           const titleId = `work-title-${number}`;
           return (
-            <article
-              key={slug}
-              className={styles.project}
-              aria-labelledby={titleId}
-            >
-              <div className={styles.text}>
-                <p className={styles.index}>{number}</p>
-                <h3 id={titleId} className={styles.title}>
-                  {project.title}
-                </h3>
-                <p className={styles.summary}>{project.summary}</p>
-                <Link href={`/work/${slug}`} className={styles.more}>
-                  Read the case study
-                  <span aria-hidden="true">→</span>
-                </Link>
-
-                <dl className={styles.meta}>
-                  <div className={styles.metaRow}>
-                    <dt>Role</dt>
-                    <dd>{project.role}</dd>
-                  </div>
-                  <div className={styles.metaRow}>
-                    <dt>Domain</dt>
-                    <dd>{project.domain.join(" · ")}</dd>
-                  </div>
-                  {project.status === "verified" ? (
-                    <div className={styles.metaRow}>
-                      <dt>Year</dt>
-                      <dd>{project.year}</dd>
-                    </div>
-                  ) : (
-                    <div className={styles.metaRow}>
-                      <dt>Status</dt>
-                      <dd>{statusLabel(project) ?? "Case study"}</dd>
-                    </div>
-                  )}
-                </dl>
-              </div>
-
-              <figure
-                className={`${styles.visual} ${
-                  tone === "dark" ? styles.visualDark : styles.visualLight
-                }`}
-                style={{ "--visual-ratio": ratio } as React.CSSProperties}
+            <div key={slug} className={styles.item}>
+              <article
+                className={styles.project}
+                aria-labelledby={titleId}
+                data-cursor="View"
               >
-                {visual}
-                <span className={styles.cue} aria-hidden="true">
-                  View case study
-                  <span className={styles.cueArrow}>→</span>
-                </span>
-              </figure>
-            </article>
+                <div className={styles.text}>
+                  <p className={styles.index}>{number}</p>
+                  <h3 id={titleId} className={styles.title}>
+                    {project.title}
+                  </h3>
+                  <p className={styles.summary}>{project.summary}</p>
+
+                  <dl className={styles.meta}>
+                    <div className={styles.metaRow}>
+                      <dt>Role</dt>
+                      <dd>{project.role}</dd>
+                    </div>
+                    <div className={styles.metaRow}>
+                      <dt>Domain</dt>
+                      <dd>{project.domain.join(" · ")}</dd>
+                    </div>
+                    {project.status === "verified" ? (
+                      <div className={styles.metaRow}>
+                        <dt>Year</dt>
+                        <dd>{project.year}</dd>
+                      </div>
+                    ) : (
+                      <div className={styles.metaRow}>
+                        <dt>Status</dt>
+                        <dd>{statusLabel(project) ?? "Case study"}</dd>
+                      </div>
+                    )}
+                  </dl>
+                </div>
+
+                <figure
+                  className={`${styles.visual} ${
+                    tone === "dark" ? styles.visualDark : styles.visualLight
+                  }`}
+                  style={{ "--visual-ratio": ratio } as React.CSSProperties}
+                >
+                  <SwipeHint />
+                  {visual}
+                </figure>
+
+                <div className={styles.footer}>
+                  <Link href={`/work/${slug}`} className={styles.more}>
+                    Read the case study
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </div>
+              </article>
+            </div>
           );
         })}
       </div>
