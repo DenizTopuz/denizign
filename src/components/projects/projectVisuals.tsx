@@ -65,7 +65,7 @@ export const projectVisuals: Record<
   channels: {
     visual: (
       <Image
-        src="/projects/channels/showcase-responsive.png"
+        src="/projects/channels/showcase-responsive.avif"
         width={2000}
         height={1796}
         alt="A barbecue-themed channel shown on desktop, tablet and phone."

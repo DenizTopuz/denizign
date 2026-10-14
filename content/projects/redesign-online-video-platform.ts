@@ -33,7 +33,7 @@ export const redesignOnlineVideoPlatform: VerifiedProject = {
     "A more cohesive interface with unified user flows, a clear grid system, a simplified interface and a better organisation of content.",
   image: {
     kind: "image",
-    src: "/projects/redesign-online-video-platform/end-results.png",
+    src: "/projects/redesign-online-video-platform/end-results.avif",
     width: 1990,
     height: 2000,
     alt: "The redesigned media library: the media overview, a media table and the detail page of a clip.",

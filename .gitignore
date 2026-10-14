@@ -43,3 +43,7 @@ next-env.d.ts
 # Third-party inspiration screenshots (local only; repository is public)
 references/inspiration/*
 !references/inspiration/.gitkeep
+
+# Static export for plain hosting
+/out/
+/denizign-site.zip

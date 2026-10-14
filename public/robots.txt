@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+Disallow: /dev/
+
+Sitemap: https://denizign.nl/sitemap.xml

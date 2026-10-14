@@ -187,7 +187,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       ],
       figures: [
         {
-          src: "/projects/channels/wireframes.png",
+          src: "/projects/channels/wireframes.avif",
           width: 2600,
           height: 1503,
           bleed: true,
@@ -197,7 +197,7 @@ export const caseStudies: Record<string, CaseStudy> = {
             "Wireframes of the editor: from the channel overview to the embed code.",
         },
         {
-          src: "/projects/channels/backend-options.png",
+          src: "/projects/channels/backend-options.avif",
           width: 3200,
           height: 1027,
           bleed: true,
@@ -207,7 +207,7 @@ export const caseStudies: Record<string, CaseStudy> = {
             "The back-end editor: configuration options for styling, elements, the detail page and embedding.",
         },
         {
-          src: "/projects/channels/showcase-responsive.png",
+          src: "/projects/channels/showcase-responsive.avif",
           width: 2000,
           height: 1796,
           alt: "A barbecue-themed channel shown on desktop, tablet, a phone and a video overlay.",
@@ -216,7 +216,7 @@ export const caseStudies: Record<string, CaseStudy> = {
           surface: "soft",
         },
         {
-          src: "/projects/channels/promo.png",
+          src: "/projects/channels/promo.avif",
           width: 1600,
           height: 1375,
           alt: "Two football club video channels with a featured header, rows of highlights, players and specials, and a ticket banner.",
@@ -300,7 +300,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       ],
       figures: [
         {
-          src: "/projects/content-protection/brainstorm.png",
+          src: "/projects/content-protection/brainstorm.avif",
           width: 1722,
           height: 1800,
           alt: "Early designs of the policy flow: an add-policy dialog with three types, and a policy page with rules, tags and the content it applies to.",
@@ -309,7 +309,7 @@ export const caseStudies: Record<string, CaseStudy> = {
           surface: "soft",
         },
         {
-          src: "/projects/content-protection/feedback-moments.png",
+          src: "/projects/content-protection/feedback-moments.avif",
           width: 1486,
           height: 2000,
           alt: "Several design variations of selecting a policy type and countries, annotated with questions such as how to select countries and whether the mechanism feels intuitive.",
@@ -376,7 +376,7 @@ export const caseStudies: Record<string, CaseStudy> = {
           half: true,
         },
         {
-          src: "/projects/content-protection/wireframes.png",
+          src: "/projects/content-protection/wireframes.avif",
           width: 2600,
           height: 1394,
           bleed: true,
@@ -386,7 +386,7 @@ export const caseStudies: Record<string, CaseStudy> = {
             "Detailed wireframes of the flow, from the empty state to a policy with several rule groups.",
         },
         {
-          src: "/projects/content-protection/end-results.png",
+          src: "/projects/content-protection/end-results.avif",
           width: 2800,
           height: 1366,
           bleed: true,
@@ -563,7 +563,7 @@ export const caseStudies: Record<string, CaseStudy> = {
             "After: a clear play button, skip buttons, a thumbnail preview while seeking, and one row of controls.",
         },
         {
-          src: "/projects/player-skin/play-button-styles.png",
+          src: "/projects/player-skin/play-button-styles.avif",
           width: 2600,
           height: 624,
           bleed: true,
@@ -573,7 +573,7 @@ export const caseStudies: Record<string, CaseStudy> = {
             "The same skin in different styles: round, square and outlined play buttons in the customer's colour.",
         },
         {
-          src: "/projects/player-skin/best-experience.png",
+          src: "/projects/player-skin/best-experience.avif",
           width: 2000,
           height: 1722,
           bleed: true,
@@ -583,7 +583,7 @@ export const caseStudies: Record<string, CaseStudy> = {
             "Player states: the main skin, related clips, and an up-next countdown that can be cancelled.",
         },
         {
-          src: "/projects/player-skin/documentation.png",
+          src: "/projects/player-skin/documentation.avif",
           width: 2400,
           height: 2021,
           bleed: true,
@@ -724,7 +724,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       ],
       figures: [
         {
-          src: "/projects/shorts/wireframes.png",
+          src: "/projects/shorts/wireframes.avif",
           width: 2660,
           height: 1418,
           bleed: true,
@@ -751,7 +751,7 @@ export const caseStudies: Record<string, CaseStudy> = {
           half: true,
         },
         {
-          src: "/projects/shorts/player-states.png",
+          src: "/projects/shorts/player-states.avif",
           width: 2000,
           height: 1376,
           bleed: true,
@@ -921,7 +921,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       ],
       figures: [
         {
-          src: "/projects/redesign-online-video-platform/wireframes.png",
+          src: "/projects/redesign-online-video-platform/wireframes.avif",
           width: 2660,
           height: 1418,
           bleed: true,
@@ -957,7 +957,7 @@ export const caseStudies: Record<string, CaseStudy> = {
             "After: the same page for a clip that is filled in. Thumbnails, chapters, languages, reactions, sharing and performance in one view, with publishing in the details panel.",
         },
         {
-          src: "/projects/redesign-online-video-platform/design-system.png",
+          src: "/projects/redesign-online-video-platform/design-system.avif",
           width: 1279,
           height: 1800,
           alt: "Colour primitives, button variants and form field states from the design system in Figma.",

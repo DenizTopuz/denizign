@@ -32,7 +32,7 @@ export const channels: VerifiedProject = {
     "A redesigned editor with new and redesigned components, defined user flows and front-end and back-end layouts, so customers can build and brand their own channels.",
   image: {
     kind: "image",
-    src: "/projects/channels/showcase-responsive.png",
+    src: "/projects/channels/showcase-responsive.avif",
     width: 2000,
     height: 1796,
     alt: "A channel page in a barbecue theme shown on desktop, tablet and phone, with a featured header, rows of vertical videos and a banner.",

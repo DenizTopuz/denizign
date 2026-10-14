@@ -32,7 +32,7 @@ export const shorts: VerifiedProject = {
     "Player states for desktop and mobile, support for several video formats, a complete creation experience in the platform, a fully responsive design and Shorts that can be embedded on external pages.",
   image: {
     kind: "image",
-    src: "/projects/shorts/end-results.png",
+    src: "/projects/shorts/end-results.avif",
     width: 1990,
     height: 2000,
     alt: "The Shorts screens: an overview of a short with its settings, and the experience and player configuration pages.",

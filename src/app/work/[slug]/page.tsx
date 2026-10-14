@@ -13,12 +13,6 @@ import { HomepageFooter } from "@/components/sections/HomepageFooter";
 
 type Params = { slug: string };
 
-/*
- * Every slug is known at build time (generateStaticParams), so the route is
- * rendered as a whole rather than streamed behind a shell.
- */
-export const instant = false;
-
 export function generateStaticParams(): Params[] {
   return projects.map((project) => ({ slug: project.slug }));
 }
