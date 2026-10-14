@@ -135,7 +135,7 @@ export function CaseStudyNarrative({ study }: { study: CaseStudy }) {
         ) : null}
         <ul className={styles.layers}>
           {study.thinking.layers.map((layer, index) => (
-            <li key={layer.title} className={styles.layer}>
+            <li key={layer.title} className={styles.layer} data-rise>
               <span className={styles.layerIndex} aria-hidden="true">
                 {String(index + 1).padStart(2, "0")}
               </span>
@@ -155,7 +155,7 @@ export function CaseStudyNarrative({ study }: { study: CaseStudy }) {
       >
         <ol className={styles.decisions}>
           {study.decisions.map((item, index) => (
-            <li key={item.title} className={styles.decision}>
+            <li key={item.title} className={styles.decision} data-rise>
               <span className={styles.number}>
                 {String(index + 1).padStart(2, "0")}
               </span>

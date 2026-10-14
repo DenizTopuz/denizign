@@ -15,10 +15,10 @@ import styles from "./StickyMenu.module.css";
  */
 
 const links = [
-  { href: "/#work", label: "Work" },
-  { href: "/#approach", label: "Approach" },
-  { href: "/about", label: "About" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/#work", label: "Work", id: "work" },
+  { href: "/#approach", label: "Approach", id: "approach" },
+  { href: "/about", label: "About", id: "about-page" },
+  { href: "/#contact", label: "Contact", id: "contact" },
 ];
 
 const luminance = (rgb: string) => {
@@ -48,6 +48,33 @@ export function StickyMenu() {
   const bar = useRef<HTMLElement>(null);
   const [shown, setShown] = useState(false);
   const [tone, setTone] = useState<"light" | "dark">("light");
+  const [spy, setSpy] = useState<string | null>(null);
+  const active =
+    pathname === "/about" ? "about-page" : pathname === "/" ? spy : null;
+
+  /* Which section is in view decides the marked link. */
+  useEffect(() => {
+    if (pathname !== "/") return;
+    const ids = ["work", "approach", "contact"];
+    const targets = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+    const visible = new Map<string, number>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting)
+            visible.set(entry.target.id, entry.intersectionRatio);
+          else visible.delete(entry.target.id);
+        }
+        const best = [...visible.entries()].sort((a, b) => b[1] - a[1])[0];
+        setSpy(best ? best[0] : null);
+      },
+      { rootMargin: "-30% 0px -50% 0px", threshold: [0, 0.1, 0.5, 1] },
+    );
+    targets.forEach((t) => observer.observe(t));
+    return () => observer.disconnect();
+  }, [pathname]);
 
   useEffect(() => {
     let frame = 0;
@@ -108,6 +135,7 @@ export function StickyMenu() {
                   href={href(link.href)}
                   className={styles.link}
                   tabIndex={shown ? 0 : -1}
+                  aria-current={active === link.id ? "location" : undefined}
                 >
                   {link.label}
                 </a>

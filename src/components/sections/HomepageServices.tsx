@@ -12,13 +12,13 @@ export function HomepageServices() {
       className={styles.services}
       aria-labelledby="services-label"
     >
-      <h2 id="services-label" className={styles.label}>
+      <h2 id="services-label" className={styles.label} data-rise>
         {"// What I do"}
       </h2>
 
       <ol className={styles.list}>
         {services.map((service, i) => (
-          <li key={service.title} className={styles.row}>
+          <li key={service.title} className={styles.row} data-rise>
             <span className={styles.number} aria-hidden="true">
               {String(i + 1).padStart(2, "0")}
             </span>

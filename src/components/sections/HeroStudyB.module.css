@@ -354,6 +354,36 @@
     mask-composite: intersect;
   }
 
+  /*
+   * Zoomed in a little on a phone: the face fills more of the square. The
+   * zoom is anchored near the top so the head is not cut off, and the plane
+   * clips what grows beyond it.
+   */
+  .plane {
+    overflow: hidden;
+  }
+
+  /*
+   * Parallax on a phone: the portrait lags behind the page (it moves at about
+   * half the scroll speed), so the text rises over it quickly, and the face
+   * grows as it does (1.22 to 1.46 times over the first 400px). --hero-scroll
+   * comes from HeroParallax and stays unset with reduced motion, which leaves
+   * the still, zoomed portrait.
+   */
+  .plane {
+    transform: translate3d(
+      0,
+      calc(min(var(--hero-scroll, 0), 450) * 0.5px),
+      0
+    );
+  }
+
+  .photo {
+    transform: scale(calc(1.22 + min(var(--hero-scroll, 0), 400) * 0.0006));
+    transform-origin: 50% 20%;
+    will-change: transform;
+  }
+
   /* Positioned, so the text paints in front of the (positioned) portrait. */
   .eyebrow,
   .headline,

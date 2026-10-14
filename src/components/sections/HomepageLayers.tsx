@@ -17,7 +17,7 @@ export function HomepageLayers() {
       className={styles.layers}
       aria-labelledby="layers-label"
     >
-      <h2 id="layers-label" className={styles.label}>
+      <h2 id="layers-label" className={styles.label} data-rise>
         {"// Between the layers"}
       </h2>
 
@@ -51,7 +51,13 @@ export function HomepageLayers() {
         </p>
         <ol className={styles.list}>
           {layers.map((layer, i) => (
-            <li key={layer} data-layer={i + 1} className={styles.item}>
+            <li
+              key={layer}
+              data-layer={i + 1}
+              className={styles.item}
+              data-rise
+              style={{ "--i": i } as React.CSSProperties}
+            >
               <span className={styles.number} aria-hidden="true">
                 {String(i + 1).padStart(2, "0")}
               </span>

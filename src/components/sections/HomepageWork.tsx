@@ -47,7 +47,7 @@ export function HomepageWork() {
       <ProjectCursor />
       <div className={styles.inner}>
         <header className={styles.head}>
-          <h2 id="work-label" className={styles.label}>
+          <h2 id="work-label" className={styles.label} data-rise>
             {"// Selected Work"}
           </h2>
           <p className={styles.lede}>

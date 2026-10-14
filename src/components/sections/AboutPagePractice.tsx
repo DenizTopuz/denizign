@@ -39,7 +39,12 @@ export function AboutPagePractice() {
         <h2 className={styles.label}>{"// Method"}</h2>
         <ol className={styles.steps}>
           {method.map((step, index) => (
-            <li key={step.title} className={styles.step}>
+            <li
+              key={step.title}
+              className={styles.step}
+              data-rise
+              style={{ "--i": index } as React.CSSProperties}
+            >
               <span className={styles.number} aria-hidden="true">
                 {String(index + 1).padStart(2, "0")}
               </span>

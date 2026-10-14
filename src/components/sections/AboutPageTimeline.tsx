@@ -21,7 +21,7 @@ export function AboutPageTimeline() {
 
       <ol className={styles.timeline}>
         {cv.roles.map((role) => (
-          <li key={role.employer} className={styles.entry}>
+          <li key={role.employer} className={styles.entry} data-rise>
             <p className={styles.period}>{role.period}</p>
             <span className={styles.node} aria-hidden="true" />
             <div className={styles.body}>

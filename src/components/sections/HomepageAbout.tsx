@@ -22,7 +22,7 @@ function keepTogether(text: string) {
 export function HomepageAbout() {
   return (
     <section id="about" className={styles.about} aria-labelledby="about-label">
-      <h2 id="about-label" className={styles.label}>
+      <h2 id="about-label" className={styles.label} data-rise>
         {"// About"}
       </h2>
 
@@ -37,7 +37,7 @@ export function HomepageAbout() {
       </figure>
 
       <div className={styles.text}>
-        <h3 className={styles.statement}>{keepTogether(about.statement)}</h3>
+        <h3 className={styles.statement} data-rise>{keepTogether(about.statement)}</h3>
 
         <div className={styles.paragraphs}>
           {about.paragraphs.map((paragraph) => (

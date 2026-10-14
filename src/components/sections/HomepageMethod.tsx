@@ -14,13 +14,19 @@ export function HomepageMethod() {
       className={styles.method}
       aria-labelledby="method-label"
     >
-      <h2 id="method-label" className={styles.label}>
+      <h2 id="method-label" className={styles.label} data-rise>
         {"// How I work"}
       </h2>
 
       <ol className={styles.steps}>
         {method.map((step, i) => (
-          <li key={step.title} data-step={i + 1} className={styles.step}>
+          <li
+            key={step.title}
+            data-step={i + 1}
+            className={styles.step}
+            data-rise
+            style={{ "--i": i } as React.CSSProperties}
+          >
             <span className={styles.number} aria-hidden="true">
               {String(i + 1).padStart(2, "0")}
             </span>
