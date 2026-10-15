@@ -1,0 +1,64 @@
+# Builds the site and uploads it to the hosting account over FTP whenever
+# main changes. It can also be started by hand (Actions > Deploy > Run).
+#
+# The FTP details are stored as repository secrets, never in the code:
+#   FTP_SERVER   e.g. web03.whitelabeldomein.nl
+#   FTP_USERNAME the FTP account that points at public_html
+#   FTP_PASSWORD its password
+# Until all three exist, the upload step is skipped.
+
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
+      FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+      FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build the static site
+        run: npm run export
+
+      - name: Drop the internal playground
+        run: rm -rf out/dev
+
+      - name: Check the build
+        run: test -f out/index.html && test -f out/about/index.html
+
+      - name: Upload over FTP
+        if: ${{ env.FTP_SERVER != '' && env.FTP_USERNAME != '' && env.FTP_PASSWORD != '' }}
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./out/
+          # The FTP account starts in domains/denizign.nl/, the site lives in public_html.
+          server-dir: ./public_html/
+
+      - name: Note when the upload was skipped
+        if: ${{ env.FTP_SERVER == '' || env.FTP_USERNAME == '' || env.FTP_PASSWORD == '' }}
+        run: echo "FTP secrets are not set yet, so nothing was uploaded."
