@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { HomeLink } from "./HomeLink";
@@ -102,8 +103,19 @@ export function MobileMenu() {
         aria-hidden={open ? undefined : true}
         inert={open ? undefined : true}
       >
-        <HomeLink className={styles.brand} onClick={close}>
-          Denizign
+        <HomeLink
+          className={styles.brand}
+          onClick={close}
+          aria-label="Denizign — home"
+        >
+          <Image
+            src="/brand/denizign-mark-red.svg"
+            alt=""
+            width={270}
+            height={218}
+            className={styles.mark}
+          />
+          <span className={styles.name}>Denizign</span>
         </HomeLink>
 
         <nav aria-label="Menu">
@@ -134,9 +146,6 @@ export function MobileMenu() {
           </ul>
         </nav>
 
-        <p className={styles.note}>
-          UX Lead · Product Experience · Systems Thinking
-        </p>
       </div>
 
       <button

@@ -9,8 +9,8 @@
   inset: 0;
   z-index: 70;
   display: grid;
-  grid-template-rows: auto 1fr auto;
-  padding: var(--space-6) var(--page-padding-mobile) var(--space-24);
+  grid-template-rows: auto 1fr;
+  padding: var(--space-6) var(--page-padding-mobile) var(--space-6);
   background: var(--color-ink-900);
   color: var(--color-surface-50);
   opacity: 0;
@@ -31,16 +31,29 @@
 
 .brand {
   justify-self: start;
-  font-family: var(--font-display);
-  font-size: var(--text-body);
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-surface-50);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
   text-decoration: none;
 }
 
-/* The items sit low, within thumb reach, just above the close button. */
+.mark {
+  display: block;
+  height: var(--space-10);
+  width: auto;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: var(--text-body-lg);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-surface-50);
+}
+
+/* The items sit at the very bottom, within thumb reach. */
 .panel > nav {
   display: grid;
   align-content: end;
@@ -48,7 +61,6 @@
 
 .list {
   display: grid;
-  padding-bottom: var(--space-8);
   margin: 0;
   list-style: none;
 }
@@ -92,22 +104,6 @@
   letter-spacing: 0.06em;
   color: var(--color-accent);
   transform: translateY(-0.3em);
-}
-
-.note {
-  margin: 0;
-  max-width: none;
-  font-size: var(--text-small);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-ink-300);
-  opacity: 0;
-  transition: opacity var(--duration-base) var(--ease-out);
-}
-
-.panel[data-open="true"] .note {
-  opacity: 1;
-  transition-delay: 460ms;
 }
 
 /* The button: bottom right, in thumb reach. */
