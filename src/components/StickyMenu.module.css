@@ -1,5 +1,12 @@
 /* The menu that follows the page. Fixed to the top, fades in and out. */
 
+/* The phone gets the menu button at the bottom right instead. */
+@media (max-width: 767px) {
+  .bar {
+    display: none;
+  }
+}
+
 .bar {
   position: fixed;
   top: 0;

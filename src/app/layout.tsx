@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { MobileMenu } from "@/components/MobileMenu";
 import { RiseFallback } from "@/components/RiseFallback";
 import { StickyMenu } from "@/components/StickyMenu";
 import { site } from "../../content/site";
@@ -69,6 +70,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ThemeColorSync />
         <FillPointer />
         <StickyMenu />
+        <MobileMenu />
         <RiseFallback />
         {children}
       </body>

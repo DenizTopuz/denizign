@@ -1,0 +1,59 @@
+/* Two-line menu icon: the second line is shorter, aligned to the right. */
+
+.button {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 7px;
+  width: var(--space-12);
+  height: var(--space-12);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.light {
+  color: var(--color-text);
+}
+
+.dark {
+  color: var(--color-surface-50);
+}
+
+.line {
+  display: block;
+  width: 28px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: width var(--duration-base) var(--ease-out);
+}
+
+.short {
+  width: 18px;
+}
+
+.button:hover .short,
+.button:focus-visible .short {
+  width: 28px;
+}
+
+.button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+@media (min-width: 768px) {
+  .button {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line {
+    transition: none;
+  }
+}

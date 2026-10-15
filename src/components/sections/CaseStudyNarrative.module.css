@@ -56,6 +56,7 @@
   max-width: 40rem;
   font-size: var(--text-body-lg);
   line-height: 1.6;
+  color: var(--color-ink-700);
 }
 
 .prose p {
@@ -66,7 +67,7 @@
 /* The scope paragraph is a touch larger, in the same ink as the text below. */
 .scope {
   font-size: var(--text-lead);
-  color: var(--color-text);
+  color: var(--color-ink-700);
 }
 
 /* Role: three quiet columns */
@@ -194,6 +195,7 @@
   max-width: 40rem;
   font-size: var(--text-lead);
   line-height: 1.5;
+  color: var(--color-ink-700);
 }
 
 .reasons {
@@ -215,6 +217,7 @@
   margin: 0;
   max-width: 34rem;
   line-height: 1.55;
+  color: var(--color-ink-700);
 }
 
 @media (min-width: 768px) {

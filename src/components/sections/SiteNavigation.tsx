@@ -1,5 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
+import { HomeLink } from "../HomeLink";
+import { MenuButton } from "../MenuButton";
 import styles from "./SiteNavigation.module.css";
 
 const links: { href: string; label: string; page?: boolean }[] = [
@@ -29,8 +30,7 @@ export function SiteNavigation({
   return (
     <header className={wide ? styles.wide : "container"}>
       <div className={`${styles.bar} ${styles[tone]}`}>
-        <Link
-          href="/"
+        <HomeLink
           className={`${styles.logo} ${brand ? styles.brand : ""}`}
           aria-label="Denizign — home"
         >
@@ -42,8 +42,9 @@ export function SiteNavigation({
             className={styles.mark}
           />
           {brand ? <span className={styles.name}>Denizign</span> : null}
-        </Link>
-        <nav aria-label="Primary">
+        </HomeLink>
+        <MenuButton tone={tone} />
+        <nav aria-label="Primary" className={styles.nav}>
           <ul className={styles.links}>
             {links.map((link) => (
               <li key={link.href}>

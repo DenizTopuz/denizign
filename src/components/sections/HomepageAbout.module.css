@@ -51,6 +51,8 @@
   object-fit: cover;
   object-position: 50% 6%;
   filter: brightness(0.82) saturate(0.82) contrast(0.96);
+  /* Pure-black pixels are lifted to the surrounding near-black. */
+  mix-blend-mode: lighten;
 }
 
 .text {

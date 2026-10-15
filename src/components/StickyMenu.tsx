@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { HomeLink } from "./HomeLink";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import styles from "./StickyMenu.module.css";
@@ -118,8 +118,7 @@ export function StickyMenu() {
       aria-hidden={shown ? undefined : true}
     >
       <div className={styles.inner}>
-        <Link
-          href="/"
+        <HomeLink
           className={styles.logo}
           aria-label="Denizign — home"
           tabIndex={shown ? 0 : -1}
@@ -132,7 +131,7 @@ export function StickyMenu() {
             className={styles.mark}
           />
           <span className={styles.name}>Denizign</span>
-        </Link>
+        </HomeLink>
         <nav aria-label="Quick menu">
           <ul className={styles.links}>
             {links.map((link) => (

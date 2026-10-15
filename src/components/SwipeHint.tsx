@@ -44,7 +44,7 @@ export function SwipeHint({
         hint.dataset.state = "playing";
         observer.disconnect();
       },
-      { threshold: 0.6 },
+      { threshold: 0.25 },
     );
 
     sync();

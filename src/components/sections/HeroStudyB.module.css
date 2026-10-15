@@ -16,6 +16,7 @@
 
 .plane {
   position: relative;
+  background: var(--color-ink-900);
   order: 2;
   margin: var(--space-8) 0 0;
   aspect-ratio: 4 / 5;
@@ -31,6 +32,10 @@
   object-fit: cover;
   object-position: 50% 10%;
   filter: brightness(0.82) saturate(0.82) contrast(0.96);
+  /* The photo's darkest pixels are pure black. "Lighten" lifts them to the
+     canvas colour behind (the plane carries it), so there is no black patch
+     and no visible edge between photo and page. */
+  mix-blend-mode: lighten;
 }
 
 .copy {
