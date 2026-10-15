@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./PageTransition.module.css";
 
 /*
@@ -77,6 +77,16 @@ export function PageTransition() {
     document.addEventListener("click", onClick);
     return () => document.removeEventListener("click", onClick);
   }, [router]);
+
+  /* Every page change starts at the top (unless the link names a section). */
+  const seen = useRef(pathname);
+  useEffect(() => {
+    if (seen.current === pathname) return;
+    seen.current = pathname;
+    if (!window.location.hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }
+  }, [pathname]);
 
   useEffect(() => {
     if (phase === "reveal") {
