@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { PageTransition } from "@/components/PageTransition";
 import { MobileMenu } from "@/components/MobileMenu";
 import { RiseFallback } from "@/components/RiseFallback";
 import { StickyMenu } from "@/components/StickyMenu";
@@ -72,6 +73,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <StickyMenu />
         <MobileMenu />
         <RiseFallback />
+        <PageTransition />
         {children}
       </body>
     </html>

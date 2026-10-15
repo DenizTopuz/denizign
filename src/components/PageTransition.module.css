@@ -1,0 +1,73 @@
+/*
+ * Curtain between pages. Transform and opacity only. Idle: parked below the
+ * viewport. Cover: rises. Reveal: lifts off the top, then resets.
+ */
+
+.curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  align-items: end;
+  padding: var(--space-6) var(--page-padding-mobile) var(--space-12);
+  background: var(--color-ink-900);
+  color: var(--color-surface-50);
+  pointer-events: none;
+  visibility: hidden;
+  transform: translate3d(0, 100%, 0);
+}
+
+.curtain[data-phase="cover"] {
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+  transition: transform 460ms var(--ease-out);
+}
+
+.curtain[data-phase="reveal"] {
+  visibility: visible;
+  transform: translate3d(0, -100%, 0);
+  transition: transform 620ms var(--ease-out);
+}
+
+.label {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 12vw, 6rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  opacity: 0;
+  transform: translate3d(0, 0.4em, 0);
+}
+
+.curtain[data-phase="cover"] .label {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 320ms var(--ease-out) 160ms,
+    transform 460ms var(--ease-out) 160ms;
+}
+
+.curtain[data-phase="reveal"] .label {
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .curtain {
+    padding-inline: var(--page-padding-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  .curtain {
+    padding-inline: var(--page-padding-desktop);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .curtain {
+    display: none;
+  }
+}
