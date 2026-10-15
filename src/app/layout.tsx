@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Manrope } from "next/font/google";
+import localFont from "next/font/local";
 import { RiseFallback } from "@/components/RiseFallback";
 import { StickyMenu } from "@/components/StickyMenu";
 import { site } from "../../content/site";
@@ -7,21 +7,25 @@ import { FillPointer } from "@/components/FillPointer";
 import { ThemeColorSync } from "@/components/ThemeColorSync";
 import "@/styles/globals.css";
 
-const manrope = Manrope({
+/*
+ * The fonts are files in the project (src/fonts), not fetched from Google at
+ * build time, so the site builds the same everywhere (also on GitHub's
+ * servers). Both are variable fonts: one file per family covers all weights.
+ */
+const manrope = localFont({
+  src: "../fonts/manrope-variable-latin.woff2",
   variable: "--font-manrope",
-  subsets: ["latin"],
-  weight: ["600", "700", "800"],
+  weight: "200 800",
   display: "swap",
 });
 
-const inter = Inter({
+const inter = localFont({
+  src: "../fonts/inter-variable-latin.woff2",
   variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: "100 900",
   display: "swap",
 });
 
-/* The page opens on the near-black hero; ThemeColorSync follows the scroll. */
 export const viewport: Viewport = {
   themeColor: "#111214",
   colorScheme: "light",
