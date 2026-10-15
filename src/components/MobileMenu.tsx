@@ -119,6 +119,9 @@ export function MobileMenu() {
         </HomeLink>
 
         <nav aria-label="Menu">
+          <p className={styles.note}>
+            UX Lead · Product Experience · Systems Thinking
+          </p>
           <ul className={styles.list}>
             {items.map((item, index) => (
               <li
