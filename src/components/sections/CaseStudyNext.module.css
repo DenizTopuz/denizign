@@ -36,6 +36,33 @@
   text-decoration: none;
 }
 
+.linkSmall {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  justify-self: start;
+  min-height: var(--space-12);
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.linkSmall .title {
+  text-decoration-thickness: 2px;
+}
+
+.linkSmall:hover .title {
+  text-decoration-color: var(--color-text);
+}
+
+.label + .link + .label {
+  margin-top: var(--space-8);
+}
+
 .title {
   text-decoration: underline;
   text-decoration-thickness: 3px;
@@ -77,5 +104,5 @@
   line-height: 1.2;
   letter-spacing: -0.01em;
   text-transform: none;
-  color: var(--color-accent);
+  color: var(--color-text-muted);
 }

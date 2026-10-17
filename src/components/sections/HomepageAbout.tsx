@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import { about } from "../../../content/homepage";
 import styles from "./HomepageAbout.module.css";
@@ -57,6 +58,13 @@ export function HomepageAbout() {
             ))}
           </ul>
         </div>
+
+        <Link href="/about" className={styles.more}>
+          <span className={styles.moreText}>Read more about my background</span>
+          <span aria-hidden="true" className={styles.moreArrow}>
+            →
+          </span>
+        </Link>
       </div>
     </section>
   );

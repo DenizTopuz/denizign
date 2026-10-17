@@ -49,7 +49,7 @@ export default function AboutPage() {
         <AboutPageHero />
         <AboutPagePractice />
         <AboutPageTimeline />
-        <HomepageContact />
+        <HomepageContact showAbout={false} />
       </main>
 
       <HomepageFooter />

@@ -17,6 +17,13 @@ export function CaseStudyNext({ slug }: { slug: string }) {
           →
         </span>
       </Link>
+      <p className={styles.label}>{"// Who made this"}</p>
+      <Link href="/about" className={styles.linkSmall}>
+        <span className={styles.title}>About Deniz</span>
+        <span aria-hidden="true" className={styles.arrow}>
+          →
+        </span>
+      </Link>
     </nav>
   );
 }

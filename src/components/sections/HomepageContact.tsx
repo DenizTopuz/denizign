@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { contact } from "../../../content/homepage";
 import styles from "./HomepageContact.module.css";
 
@@ -7,7 +8,7 @@ import styles from "./HomepageContact.module.css";
  * confirmed email address) comes from content/homepage.ts. Static, no client
  * code. The email link is the primary action.
  */
-export function HomepageContact() {
+export function HomepageContact({ showAbout = true }: { showAbout?: boolean }) {
   return (
     <section
       id="contact"
@@ -48,6 +49,17 @@ export function HomepageContact() {
             </span>
           </a>
         </li>
+        {showAbout ? (
+          <li className={styles.row}>
+            <span className={styles.rowLabel}>About</span>
+            <Link href="/about" className={styles.link}>
+              <span className={styles.linkText}>Read more about me</span>
+              <span aria-hidden="true" className={styles.arrow}>
+                →
+              </span>
+            </Link>
+          </li>
+        ) : null}
       </ul>
     </section>
   );

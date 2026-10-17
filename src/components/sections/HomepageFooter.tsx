@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { footer } from "../../../content/homepage";
 import styles from "./HomepageFooter.module.css";
 
@@ -19,6 +20,9 @@ export function HomepageFooter() {
           KvK {footer.kvk}
         </p>
         <p className={styles.item}>{footer.location}</p>
+        <Link href="/about" className={styles.top}>
+          About
+        </Link>
         <a href="#main-content" className={styles.top}>
           Back to top
           <span aria-hidden="true">↑</span>
