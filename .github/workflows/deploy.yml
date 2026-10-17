@@ -48,17 +48,4 @@ jobs:
         run: test -f out/index.html && test -f out/about/index.html
 
       - name: Upload over FTP
-        if: ${{ env.FTP_SERVER != '' && env.FTP_USERNAME != '' && env.FTP_PASSWORD != '' }}
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          local-dir: ./out/
-          # The FTP account starts in domains/denizign.nl/, the site lives in public_html.
-          server-dir: ./public_html/
-
-      - name: Note when the upload was skipped
-        if: ${{ env.FTP_SERVER == '' || env.FTP_USERNAME == '' || env.FTP_PASSWORD == '' }}
-        run: echo "FTP secrets are not set yet, so nothing was uploaded."
+        run: bash scripts/deploy-ftp.sh
