@@ -119,3 +119,38 @@ export const footer = {
   kvk: "80072518",
   location: "Netherlands",
 };
+
+/*
+ * Design system section. Facts supplied by Deniz: the WCAG page was set up by
+ * the Design System team so Cardan (which performs the official testing) can
+ * check the components; Storybook documents all components; the team he leads
+ * updates the system weekly and builds new components used in all
+ * applications. No test results are claimed.
+ */
+export const designSystem = {
+  label: "// Design system",
+  statement: {
+    lead: "A design system that keeps products ",
+    accent: "consistent and reliable.",
+  },
+  paragraphs: [
+    "I lead the team behind the NDW Design System. Every week we update it so all systems stay current, and we add new components that are used in all our applications.",
+    "Together this keeps NDW's applications consistent and reliable.",
+  ],
+  links: [
+    {
+      label: "Components",
+      title: "NDW Storybook",
+      description:
+        "All components of the NDW Design System, documented in one place.",
+      href: "https://design.ndw.nu/ndw-storybook/?path=/docs/docs-playground--docs",
+    },
+    {
+      label: "Accessibility",
+      title: "NDW Playground",
+      description:
+        "The components in a realistic context, with a WCAG page the Design System team set up so Cardan, which performs the official testing, can check that the components meet the WCAG guidelines.",
+      href: "https://design.ndw.nu/playground/",
+    },
+  ],
+} as const;

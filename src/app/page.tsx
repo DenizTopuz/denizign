@@ -4,6 +4,7 @@ import { site } from "../../content/site";
 import { HeroStudyB } from "@/components/sections/HeroStudyB";
 import { HomepageAbout } from "@/components/sections/HomepageAbout";
 import { HomepageContact } from "@/components/sections/HomepageContact";
+import { HomepageDesignSystem } from "@/components/sections/HomepageDesignSystem";
 import { HomepageFooter } from "@/components/sections/HomepageFooter";
 import { HomepageIntro } from "@/components/sections/HomepageIntro";
 import { HomepageLayers } from "@/components/sections/HomepageLayers";
@@ -62,6 +63,8 @@ export default function HomePage() {
         <HomepageServices />
 
         <HomepageWork />
+
+        <HomepageDesignSystem />
 
         <HomepageLayers />
 

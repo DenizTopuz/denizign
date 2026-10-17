@@ -1,0 +1,180 @@
+/*
+ * Design system. Warm-white canvas, one statement, two short paragraphs and
+ * two ruled rows with external links. Mobile first; from 1024px the label
+ * sits beside the link, as in Contact.
+ */
+
+.section {
+  --pad: var(--page-padding-mobile);
+
+  display: grid;
+  row-gap: var(--space-10);
+  border-top: 1px solid var(--color-ink-300);
+  padding-block: var(--space-24);
+  padding-inline: calc(max(0px, (100% - 90rem) / 2) + var(--pad));
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.section > * {
+  min-width: 0;
+}
+
+.label {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-text-muted);
+}
+
+.statement {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  color: var(--color-text);
+  text-wrap: balance;
+}
+
+.accent {
+  color: var(--color-accent);
+}
+
+.copy {
+  display: grid;
+  row-gap: var(--space-4);
+}
+
+.paragraph {
+  margin: 0;
+  max-width: 34rem;
+  font-size: var(--text-body-lg);
+  line-height: 1.6;
+  color: var(--color-ink-700);
+  text-wrap: pretty;
+}
+
+.rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.row {
+  display: grid;
+  row-gap: var(--space-3);
+  padding-block: var(--space-8);
+  border-top: 1px solid var(--color-border);
+}
+
+.rowLabel {
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.body {
+  display: grid;
+  row-gap: var(--space-3);
+  justify-items: start;
+}
+
+.link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  max-width: 100%;
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.linkText {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-decoration-color: var(--color-accent);
+  text-decoration-skip-ink: none;
+  text-underline-offset: 0.2em;
+}
+
+.arrow {
+  color: var(--color-accent);
+}
+
+.link:hover .linkText {
+  text-decoration-color: var(--color-text);
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+.description {
+  margin: 0;
+  max-width: 34rem;
+  font-size: var(--text-body);
+  line-height: 1.6;
+  color: var(--color-ink-700);
+  text-wrap: pretty;
+}
+
+@media (min-width: 768px) {
+  .section {
+    --pad: var(--page-padding-tablet);
+
+    row-gap: var(--space-12);
+    padding-block: var(--space-30);
+  }
+
+  .statement {
+    font-size: var(--text-h1);
+    max-width: 18em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    --pad: var(--page-padding-desktop);
+
+    padding-block: var(--space-36);
+  }
+
+  .statement {
+    font-size: var(--text-display-l);
+    line-height: 1;
+  }
+
+  .row {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-6);
+    padding-block: var(--space-10);
+  }
+
+  .rowLabel {
+    grid-column: 1 / span 3;
+    padding-top: 0.6em;
+  }
+
+  .body {
+    grid-column: 4 / -1;
+  }
+
+  .link {
+    font-size: var(--text-h2);
+  }
+}
