@@ -147,10 +147,10 @@ export const designSystem = {
     },
     {
       label: "Accessibility",
-      title: "NDW Playground",
+      title: "NDW WCAG page",
       description:
-        "The components in a realistic context, with a WCAG page the Design System team set up so Cardan, which performs the official testing, can check that the components meet the WCAG guidelines.",
-      href: "https://design.ndw.nu/playground/",
+        "A page the Design System team set up so Cardan, which performs the official testing, can check that the components meet the WCAG guidelines.",
+      href: "https://design.ndw.nu/playground/wcag",
     },
   ],
 } as const;
