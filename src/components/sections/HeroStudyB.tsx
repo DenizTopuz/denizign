@@ -42,8 +42,8 @@ export function HeroStudyB() {
             </p>
 
             <p className={styles.lead}>
-              I connect users, product, technology and teams to turn complexity
-              into intuitive digital experiences.
+              I make complex products understandable, for the people who use
+              them and the teams who build them.
             </p>
 
             <h1 id="study-b-title" className={styles.headline}>
