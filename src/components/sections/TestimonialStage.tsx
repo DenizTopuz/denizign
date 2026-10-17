@@ -62,12 +62,32 @@ function Quote({ item }: { item: Testimonial }) {
 export function TestimonialStage({ items }: { items: Testimonial[] }) {
   const [active, setActive] = useState(0);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
+  const [dir, setDir] = useState<1 | -1>(1);
+  const touch = useRef<{ x: number; y: number } | null>(null);
   const last = items.length - 1;
 
   const go = (index: number, focus = false) => {
     const next = (index + items.length) % items.length;
+    setDir(index > active ? 1 : -1);
     setActive(next);
     if (focus) tabs.current[next]?.focus();
+  };
+
+  /* Swipe the whole block on touch screens; vertical scrolling is untouched. */
+  const onTouchStart = (event: React.TouchEvent) => {
+    const point = event.touches[0];
+    touch.current = { x: point.clientX, y: point.clientY };
+  };
+
+  const onTouchEnd = (event: React.TouchEvent) => {
+    const start = touch.current;
+    touch.current = null;
+    if (!start || items.length < 2) return;
+    const point = event.changedTouches[0];
+    const dx = point.clientX - start.x;
+    const dy = point.clientY - start.y;
+    if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+    go(active + (dx < 0 ? 1 : -1));
   };
 
   const onKeyDown = (event: React.KeyboardEvent) => {
@@ -95,6 +115,8 @@ export function TestimonialStage({ items }: { items: Testimonial[] }) {
       role="group"
       aria-roledescription="carousel"
       aria-label="Recommendations"
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
     >
       <div className={styles.head}>
         <p className={styles.counter} aria-live="polite">
@@ -122,7 +144,7 @@ export function TestimonialStage({ items }: { items: Testimonial[] }) {
         </div>
       </div>
 
-      <div className={styles.slides}>
+      <div className={styles.slides} data-dir={dir}>
         {items.map((item, index) => (
           <div
             key={`${item.name}-${item.date}`}

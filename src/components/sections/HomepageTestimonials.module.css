@@ -37,6 +37,8 @@
 .stage {
   display: grid;
   row-gap: var(--space-8);
+  /* Horizontal swipes change the recommendation; vertical scroll stays native. */
+  touch-action: pan-y;
 }
 
 .head {
@@ -79,11 +81,21 @@
 @keyframes slide-in {
   from {
     opacity: 0;
+    transform: translate3d(calc(var(--shift, 0) * 1.5rem), 0, 0);
   }
 
   to {
     opacity: 1;
+    transform: none;
   }
+}
+
+.slides[data-dir="1"] {
+  --shift: 1;
+}
+
+.slides[data-dir="-1"] {
+  --shift: -1;
 }
 
 .figure {
